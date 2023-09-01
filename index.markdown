@@ -4,4 +4,7 @@
 
 layout: home
 ---
+<!-- ![Picture](docs/assets/headshot.jpg) -->
+<img src="docs/assets/headshot.jpg" width="30%">
+
 My name is Jenna, and I am a research data scientist at Bank of America, working on our virtual assistant Erica. My research involves <b> text summarization</b>, <b>truthfulness</b>, and <b>alignment of NLP systems with human preferences</b>.
