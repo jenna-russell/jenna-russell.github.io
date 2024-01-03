@@ -3,7 +3,7 @@ layout: default
 title: CV
 ---
 
-You can download the PDF version [here]({{ site.url }}/assets/jrussell_cv.pdf).
+You can download the PDF version [here]({{ site.url }}/assets/russell_jennifer_cv.pdf).
 
 ## Research Interests
 
@@ -28,7 +28,7 @@ Improved machine-translation system using weakly supervised methods of data gene
 Remote, May 2020 - Aug 2020\
 Team lead creating a forecasting model for ATM utilization during the pandemic, reduced MAE from 8.6% to 6.3%
 
-<b> Data Analyst Intent, Corning Incorporated </b> \
+<b> Data Analyst Intern, Corning Incorporated </b> \
 Corning, NY, May 2019 - Aug 2019\
 Improved emerging trend identification by analyzing news data using topic modeling to track the rise and fall of industry trends
 
@@ -39,17 +39,20 @@ Creating an Issue-Resolution Summarization system for call center calls with the
 Built a Bart-based summarizer fine-tuned on DialogSum & XSum datasets\
 Employed methods to generate more faithful/truthful summaries such as training with a contrastive loss function and re-ranking beams by automatic faithfulness metrics 
 
-<b> Extreme Summarization for Topic Extraction </b> \
+<b> Title Generation</b> \
 Research methods of extreme summarization to provide short descriptions for the purpose of extracting the main topic of a text\
 Created topic summarization system using the following methodology
 Used fine-tuned issue-resolution Bart to generate 3 summary beams for about 15k call transcripts \
 Used Few-shot label generation with MPT-7B based off of Unlabeled Data Generation methodology to generate extreme summaries from the issue-resolution summaries\
-Used transfer learning to train Bart to learn extreme summaries from original dialogue text
+Used transfer learning to train Bart to learn extreme summaries from original dialogue text.
 
 <b> Semantic Role Labeling </b> \
 Researching semantic role systems for dialogue systems to improve contextual understanding of low-resource systems \
 Proposed new semantic role schema specifically for chatbots \
 Demonstrated improved contextual understanding of chatbot when using the semantic role system to gain a better underlying understanding of language
+
+<b>Machine Translation </b> \
+Creating Spanish version of Erica by using automatic translation to create English version of utterances. Established novel financial Spanish-English translation dataset and nstituted a weak supervision loop to improve quality and quantity of training data
 
 
 ## Teaching
