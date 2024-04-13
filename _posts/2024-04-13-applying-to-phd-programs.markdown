@@ -4,6 +4,8 @@ date: 2024-04-13
 layout: post
 ---
 
+<i><b> Still working on this <i><b>
+
 An in-depth post on my experience deciding to do my PhD and the application process. I currently just accepted my offer yesterday, so I decided to write this while everything was still fresh on my mind. I write both about my personal experience and advice for future applicants.
 
 <h2> Deciding to Apply (March 2023) </h2>
