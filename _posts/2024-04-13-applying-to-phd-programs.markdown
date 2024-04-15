@@ -6,7 +6,7 @@ layout: post
 
 <i><b> Still working on this <i><b>
 
-An in-depth post on my experience deciding to do my PhD and the application process. I currently just accepted my offer yesterday, so I decided to write this while everything was still fresh on my mind. I write both about my personal experience and advice for future applicants.
+An in-depth post on my experience deciding to do my PhD and the application process. I currently just accepted my offer yesterday, so I decided to write this while everything was still fresh on my mind. I write both about my personal experience and advice for future applicants. I ended up getting 6 acceptances from (the obsurdly high) 19 applications I submitted. I knew I wanted to go to grad school this cycle and had no idea how my application would be recieved so I applied to a lot! I do want to disclose that I am a domestic student, a woman, and went to a prestigious university for undergrad. These are all factors you probably cannot change at the time of applying to PhD programs but may alter application outcomes.
 
 <h2> Deciding to Apply (March 2023) </h2>
 
@@ -37,6 +37,9 @@ This is the most important time to read as much research as possible. Before you
 * [Seminal CS Papers][seminal]
 * [Daily Papers][daily]
 
+<b> Building a Support Network: </b>
+You need to build a group of people who can help guide you through the application process. This means people who have done it before! I found it helpful to start getting in touch with my mentor from undergrad and a friend I had from undergrad who is currently a 3rd year NLP PhD student. They were able to give me some early advice, and put me in contact with other people who would be good to talk to. It's helpful to get advice from both students who have recently gone through applications as well as professors who are familiar with finding potential candidates.
+
 <b> Cold Emailing: </b> 
 Tread carefully here. All in all, I think it is helpful to email professors, but it has to be done correctly. If you are not very confident in your interpersonal skills or English proficiency, you may be better of not emailing. Of my 6 acceptances, I had emailed 2 of the professors. If you decide you would like to, here is what I did: 
 
@@ -45,6 +48,8 @@ Tread carefully here. All in all, I think it is helpful to email professors, but
 2. Read one of their recent papers and generate a few questions. You want to find a paper from the last year or two because you want to talk about a project the Professor is still interested in! You want to do this to include later on in your email - it isn't necessary, but I think doing so will get you much higher response rates.
 
 3. Draft the email. I made a template that I changed for each professor. Google docs has an [email template][googlemail], so I drafted emails there and saved them in a folder. This was super helpful when I was doing applications later on because I had already verbalized why I wanted to work with a professor and could just reference that later on. My general format was an intro about myself, a paragraph about our research match, and a conclusion with a personal connection. You want to show them, briefly, why they should want to work with you. That means 2 things: you do cool research and you are a cool person. People often forget the human aspect! One of my potential advisors said my email was the only one he got that he knew wasn't written by chatgpt because I mentioned his french toast. End the email with something you have in common - maybe a shared alma matter, hobby, or just pay them a compliment. 
+
+4. Send the email but make a catchy subject line. I went with "Cornell Grad Excited About Your NLP Research". You want something that compliments them and tells them that you are legit. Send from an academic email so its more likely to get through any email filters a professor has on. 
 
 Example Email:
 
@@ -61,20 +66,45 @@ Best,<br>
 Jenna Russell
 </blockquote>
 
+
+<h2> Letters of Rec (August - October 2023) </h2>
+
+I started working on my letters of recommendation in late summer. I had already been in contact with my letter writers. My three recommenders were my advisor from Cornell, my current team lead at BofA, and coworker (who used to be a stats prof at UIUC). I think that 2 LOR need to be academia insiders, and one needs to be a known and hopefully well-liked professor in your field. I will say I think having connections from Cornell really did help my application get seen.
+
+The best advice I found was to make it as easy as possible for your recommender to write the best letter possible. I made a pdf detailing all the schools and fellowships I was applying to, with deadlines. I included all information about past teaching and researching projects. I wrote bullet point lists about all projects, my contributions, and the results of those projects. This made it really easy to keep track of everything. I also sent polite emails whenever there was a deadline nearing (at least a week notice). I also kept a spreadsheet where I monitored which of my LOR writers had submitted to which schools/portals. This was really helpful for my sanity, as well as being able to remind them which schools were due when. Also remember to thank them and give them a handwritten note of appreciation after application season is over! 
+
 <h2> Application Materials (August - December 2023) </h2>
 
-Now is the time when things 
+<b> Being Organized: </b>
+August was when I really started honing in on my application materials. This meant getting a final list of schools, starting my application materials, and getting organized. Being organized is key! I had spreadsheets with a lot of information! Keep track of all the schools you are applying due, key due dates, passwords to all the application portals, and more. One of the biggest tips I have is to start filling out the applications early. You can get the boring stuff overwith early on and make sure you aren't surprised by any requirements. I kept track of which schools needed which essays and what special requirements they needed. This was helpful, because usually if one school needed something another school did too. In the end, I had saved 1000 and 2 page versions of my SOP. 250, 500, and 1000 word versions of a diversity statement. I was able to rework a lot of the same material to fit requirements for multiple things. 
+
+<b> Statement of Purpose </b>
+Start writing the statement of purpose early! I started my first draft in August. I know this was super early, but I was glad I had so much time to rework it create many rounds of drafts. I wrote the first version and got some good advice by early September, but I knew it wasn't exactly what I wanted. I wanted to truly convey why I wanted to do specific research and create a narrative connecting my current work to that work. I stepped back and spent a few weeks reading as many SOPs as possible - the site notion is very helpful for examples of past successful essays. I also tried to find and read blogs other PhD students had written. I was able to get to work rewriting and felt much more confident in my message the second time through. I did utilize AI for some general editing ideas, but I made sure I had a clear idea of the point I wanted to get across. Mostly I used for paraphrasing some small phrases to be more succinct. 
+
+The best advice I have is to get as many people to read your SOP as possible. Especially people who know the subfield and what a good SOP looks like. I asked my teammates (all of whom had PhDs), the friends I knew who were already in programs, and mentors from applicant support programs. A ton of schools had programs to help underrepresented groups in CS get some feedback on their applications. I got mentors from Cornell, UW, CMU, and MIT, most of whom were current students. One of my mentors was in my subfield and was also able to give me some advice on which professors would be good to work with and sent me materials like good blogs and info to use. I was able to have many rounds of revisions, both because I had so many sets of eyes looking at the work and because I gave myself so much time. I never felt like I was scrambling. 
+
+I think you should take advantage of the header of the SOP. This is a chance to include some information about yourself to make your profile shine. Under my title, I had a line that included my academic email and a link to my website. This was an easy way to help people reading your SOP make a mental picture of who you are and make you more memorable.
+
+<b> Supplimental Materials: </b> 
+I did also write/revise my supplimental statements, but honestly I put a lot less effort into these. I felt it was pretty easy to write since I had such a history of advocating for women and URM in CS/Data Science spaces. I also think most advisors don't put as much emphasis on this. As for my CV, I had a few current students make some edits on this, which was also helpful! Big advice was to keep it to 2 pages. 
+
+<b>Website: </b>
+Make a website! It is 2024! Github pages has a very friendly interface that someone who is signing up to do a CS PhD should be able to figure out pretty easily. You need to have a nice homepage with an intro to who you are. Put any publications/relevant projects/cv on the page. Lastly, put an about me page!!! Personally, I think the human aspect of applying to PhD programs is highly undervalued. In the end, your materials will get you to an interview, but your personality has to shine as well. Show that you are a person with real interests outside of work. A PI has to sign up to want to work with you for 5+ years. 
 
 * [Support Programs][support]
 * [Statement of Purpose Examples][notion]
 
-<h2> Letters of Rec (Sebtember - October 2023) </h2>
+<h2> Interview Process (January - March 2024) </h2> 
+One thing that was helpful was preparing for the interview. For each one, I made sure to research the professor and the projects they were working on recently. I made sure to read & annotate one or two papers where my interests intersected with the work and create some questions/points I could bring up during the interview. This was helpful in terms of painting a picture for the interviewer that I would fit into their lab easily. I also made sure to know a few recent works in the field that were interesting so that if asked about a favorite paper (this happened a lot) I would have a relevant paper to the field that would also show I was on top of my reading!
 
-<h2> Interview Process </h2> 
+Interviews varied greatly by professor. The vast majority were short ~30 minute conversations where I was asked things like why I wanted a PhD, my greatest research interests, and what my research experience had been thus far. I did have a few that asked some more technical questions but even those weren't too bad. Honestly, if you get to the interview stage of the interview - you've already qualified for the spot. A professor isn't going to waste time interviewing people that aren't a good bet. Most likely, this is where a professor is figuring out if you are someone they can work with for the next 5-6 years. While not the most helpful advice, the best thing you can do is pretend like the professor is your friend. Speak concisely, be yourself, and breathe. This is also a good time to get a feel for if you would like to work with a professor. If it seems like there isn't much to talk about, just ask questions. Ask how the professor likes the program or what they're excited about working on or even if they like the city the school is located in. Overall, the interviews were less stressful than I anticipated. 
 
-<h2> Visit Days </h2> 
+<h2> Visit Days (March-April 2024) </h2> 
 
-<h2> Choosing a PhD Program </h2> 
+Visit days were super helpful in terms of understanding lab dynamics and see what the 'reality' of joining a program will be. It also is a great networking oppurtunity - academia is small! These are peers you will likely see at conferences, internships, or may be good to know later on. Attend all visit days you feasibly can (obviously if you know you are 0% choosing a school, let the professor know so they can have someone seriously considering that program go visit). Make sure to get time alone with the students in the labs your are visiting. They are usually pretty honest about their relationships with their advisors and their work life balance. This definitely helped me rule out one program.
+
+<h2> Choosing a PhD Program (April 2024) </h2> 
+This was a really hard decision. I had an option (Penn) in a location I knew I would love (Philly) with a lab that seemed super supportive and social, but the professor was more in the ML world than the NLP world. I had an offer at an amazing NLP group (JHU CLSP) with a well-established prof and social lab, but I knew I wanted an advisor that had more hands on time. In the end, I chose UMass even though it was the least ideal location of the three, mostly because of my close research and personality fit with my advisor. I also knew I could always do internships in different cities or spend time elsewhere later on in life. It didn't hurt that UMass was a quick train ride from NYC, drive from Boston, and a 4.5 hour drive home for me. I also grew up in the snow, so I am happy about the easy access to skiing. I think if I didn't have a car, have family in the northeast, or actively like snow, this would be a harder decision for me. I was super undecided until the last minute, but as soon as I choose I was very happy with my choice :) All you can do is go with your gut.
 
 
 [mimno]: https://mimno.infosci.cornell.edu/
