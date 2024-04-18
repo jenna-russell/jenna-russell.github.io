@@ -1,12 +1,11 @@
 ---
 title: "Applying to CS PhD Programs"
-date: 2024-04-13
+date: 2024-04-14
 layout: post
 ---
 
-<i><b> Still working on this <i><b>
 
-An in-depth post on my experience deciding to do my PhD and the application process. I currently just accepted my offer yesterday, so I decided to write this while everything was still fresh on my mind. I write both about my personal experience and advice for future applicants. I ended up getting 6 acceptances from (the obsurdly high) 19 applications I submitted. I knew I wanted to go to grad school this cycle and had no idea how my application would be recieved so I applied to a lot! I do want to disclose that I am a domestic student, a woman, and went to a prestigious university for undergrad. These are all factors you probably cannot change at the time of applying to PhD programs but may alter application outcomes.
+An in-depth post on my experience deciding to do my PhD and the application process. I recently accepted my offer, so I decided to write this while everything was still fresh on my mind. My thoughts may change over time. I write both about my personal experience and advice for future applicants. I ended up getting 6 acceptances from (the obsurdly high) 19 applications I submitted. I knew I wanted to go to grad school this cycle and had no idea how my application would be recieved so I applied to a lot! I do want to disclose that I am a domestic student, a woman, and went to a prestigious university for undergrad. These are all factors you probably cannot change at the time of applying to PhD programs but may alter application outcomes.
 
 <h2> Deciding to Apply (March 2023) </h2>
 
