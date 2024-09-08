@@ -32,7 +32,7 @@ Team lead creating a forecasting model for ATM utilization during the pandemic, 
 Corning, NY, May 2019 - Aug 2019\
 Improved emerging trend identification by analyzing news data using topic modeling to track the rise and fall of industry trends
 
-## Current Research Projects
+## Prior Research Projects
 
 <b> Abstractive Dialogue Summarization </b> \
 Creating an Issue-Resolution Summarization system for call center calls with the issue a customer is calling about and how the agent resolved a call\
@@ -64,7 +64,7 @@ Teaching Assistant, Introduction to Computing Using Python (CS 1100), Spring 201
 
 Women in Computing at Cornell (2017-2020)\
 Information Science Student Association (2018-2020) \
-Women in Data Science at Bank of America (WiDS) (2021 - present)
+Women in Data Science at Bank of America (WiDS) (2021 - 2024)
 
 ## Leadership/Service 
 
@@ -83,13 +83,13 @@ Mentor, The Coding School (2021 - 2022)
 7. “Multilingual Chatbot”. US Patent Application No. 17/993,063, filed November 23, 2022.
 8. “Performance Optimization for Real-time Large Language Speech-to-text Systems”. US Patent Application No. 18/204,981, filed June 2, 2023.
 9. “Call center voice system for use with a real-time complaint identification system”. US Patent Application No. 18/144,925, filed May 9, 2023.
+10. “System and method for increasing the accuracy of text summarization”. US Patent Application No. 18/590,105, filed February 28, 2024.
+11. “System and method for creating a controllable output summary from text”. US Patent Application No. 18/656,697, filed May 7, 2024.
+12. “Erica assist auto recommend”. US Patent Application No. 18/749,510, filed June 20, 2024.
+13. “Erica Assist Multi-Call Purpose Orchestration Call Flow text selection to determine call purpose”. US Patent Application No. 18/749,517, filed June 20, 2024.
 
 ## Relevant Coursework
 
 Introduction to Data Science, Natural Language Processing, Machine Learning for Intelligent Systems, Machine Learning for Data Science, Statistical Computing, Data-Driven Web Applications, Interactive Information Visualization
 
 
-## References
-
-David Mimno, Cornell University\
-Emad Noorzidaeh, Bank of America

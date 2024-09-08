@@ -7,7 +7,7 @@ layout: page
 <!-- ![Picture](docs/assets/IMG_0450.JPG) -->
 <img src="docs/assets/IMG_0450.JPG" width="30%">
 
-I am an incoming PhD student at the UMass Amherst [NLP lab][nlplab] advised by Professor [Mohit Iyyer][mohit]. Currently, I'm a research data scientist at Bank of America, working on our virtual assistant [Erica][erica]. Previosuly, I graduated from Cornell University, where I majored in Information Science and Statistics. My research interests include <b> factual language generation </b> and the <b>alignment of NLP systems with human preferences</b>. 
+I am a first-year PhD student at the UMass Amherst [NLP lab][nlplab] advised by Professor [Mohit Iyyer][mohit]. Previously, I was a research data scientist at Bank of America, working on our virtual assistant [Erica][erica]. I graduated from Cornell University, where I majored in Information Science and Statistics. My research interests include <b> factual language generation </b> and the <b>alignment of NLP systems with human preferences</b>. 
 
 [nlplab]: https://nlp.cs.umass.edu/
 [mohit]: https://people.cs.umass.edu/~miyyer/
