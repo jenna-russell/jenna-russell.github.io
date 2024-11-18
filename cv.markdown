@@ -6,7 +6,7 @@ title: CV
 You can download the PDF version [here]({{ site.url }}/assets/russell_jennifer_cv.pdf).
 
 ## Education
-University of Massachusetts Amherst\			     
+University of Massachusetts Amherst			     
 MS/PhD in Computer Science \
 Aug 2024 - Present \
 Advised by Professor Mohit Iyyer
