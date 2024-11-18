@@ -5,15 +5,17 @@ title: CV
 
 You can download the PDF version [here]({{ site.url }}/assets/russell_jennifer_cv.pdf).
 
-## Research Interests
 
-<b> Natural Language Generation, Text Summarization, Truthfulness and Factuality </b>
 
 ## Education
+University of Massachusetts Amherst \			     
+MS/PhD in Computer Science \
+Aug 2024 - Present \
+Advised by Professor Mohit Iyyer
 
+Cornell University \
 Bachelor of Science in Information Science, Statistics\
 Aug 2017 - Dec 2020	\
-Cornell University \
 Magna Cum Laude
 
 ## Work Experience
@@ -68,8 +70,8 @@ Women in Data Science at Bank of America (WiDS) (2021 - 2024)
 
 ## Leadership/Service 
 
-Executive Board Member, Women in Data Science at Bank of America  (2022 - present)\
-Program Lead, Girls Who Code of North Texas Summer Immersion Program (2023 - present)\
+Executive Board Member, Women in Data Science at Bank of America  (2022 - 2024)\
+Program Lead, Girls Who Code of North Texas Summer Immersion Program (2023 - 2024)\
 Mentor, The Coding School (2021 - 2022)
 
 ## Patents
