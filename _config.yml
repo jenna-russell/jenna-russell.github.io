@@ -19,13 +19,14 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Jenna Russell
-email: jjr265@cornell.edu
+email: jrussell@umass.edu
 description: # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 linkedin_username: jennifer-j-russell
 github_username:  jenna-russell 
 twitter_username: jennajrussell
+bluesky_username: jennarussell.bsky.social
 
 
 
