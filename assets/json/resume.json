@@ -1,0 +1,75 @@
+{
+  "basics": {
+    "name": "Jenna Russell",
+    "label": "PhD Student at University of Maryland, College Park",
+    "image": "",
+    "email": "jennarus@umd.edu",
+    "url": "https://jenna-russell.github.io/",
+    "profiles": [
+      {
+        "network": "Twitter",
+        "username": "AlbertEinstein",
+        "url": "https://twitter.com/AlbertEinstein"
+      }
+    ]
+  },
+  "education": [
+    {
+      "institution": "University of Maryland, College Park",
+      "location": "College Park, Maryland",
+      "url": "https://umd.edu/",
+      "area": "Computer Science",
+      "studyType": "PhD",
+      "startDate": "2025-01-01"
+    }, {
+      "institution": "University of Massachusetts Amherst",
+      "location": "Amherst, Massachusetts",
+      "url": "https://www.umass.edu/",
+      "area": "Computer Science",
+      "studyType": "PhD",
+      "startDate": "2024-09-01",
+      "endDate": "2025-01-11",
+      "summary": "Lab moved from UMass to UMD"
+    }, {
+      "institution": "Cornell University",
+      "location": "Ithaca, New York",
+      "url": "https://www.cornell.edu/",
+      "area": "Information Science, Statistics",
+      "studyType": "Bachelor of Science",
+      "startDate": "2017-08-15",
+      "endDate": "2021-05-30"
+    }
+  ],
+  "work": [
+    {
+      "name": "Bank of America",
+      "position": "Data Scientist, Erica Conversational AI",
+      "url": "https://promotions.bankofamerica.com/digitalbanking/mobilebanking/erica",
+      "startDate": "2021-07-15",
+      "endDate": "2024-07-15",
+      "summary": "Research for Erica, Bank of America's chatbot"
+    }, {
+      "name": "Bank of America",
+      "position": "Global Technology Summer Analyst",
+      "url": "https://promotions.bankofamerica.com/digitalbanking/mobilebanking/erica",
+      "startDate": "2020-05-15",
+      "endDate": "2020-08-15",
+      "summary": "Research for Erica, Bank of America's chatbot"
+    }, {
+      "name": "Corning Incorporated",
+      "position": "Data Analyst Intern",
+      "url": "https://www.corning.com/worldwide/en.html",
+      "startDate": "2019-05-15",
+      "endDate": "2019-08-15",
+      "summary": "Improved emerging trend identification by analyzing news data using topic modeling to track the rise and fall of industry trends"
+    }
+  ],
+  "publications": [
+    {
+      "name": "People who frequently use ChatGPT for writing tasks are accurate and robust detectors of AI-generated text",
+      "publisher": "arXiv 2025",
+      "releaseDate": "2025-01-26",
+      "url": "https://arxiv.org/abs/2501.15654"
+    }
+  ]
+}

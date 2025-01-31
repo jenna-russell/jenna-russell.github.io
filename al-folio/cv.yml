@@ -1,0 +1,76 @@
+- title: General Information
+  type: map
+  contents:
+    - name: Full Name
+      value: Jenna Russell
+    # - name: Date of Birth
+    #   value: 14th March 1879
+    # - name: Languages
+    #   value: English, German
+
+- title: Education
+  type: time_table
+  contents:
+    - title: PhD
+      institution: University of Maryland, College Park
+      year: 2025 - Present
+      # description:
+      #   - Description 1.
+      #   - Description 2.
+      #   - title: Description 3.
+      #     contents:
+      #       - Sub-description 1.
+      #       - Sub-description 2.
+    - title: PhD
+      institution: University of Massachusetts, Amherst
+      year: 2024
+      description:
+        - We have moved from UMass NLP to UMD CLIP lab.
+    - title: Bachelor's of Science
+      institution: Cornell University
+      year: 2017 - 2021
+      description:
+        - Information Science & Statistics
+        - Magna Cum Laude
+
+
+- title: Experience
+  type: time_table
+  contents:
+    - title: Data Scientist
+      institution: Bank of America
+      year: 2021 - 2024
+
+    - title: Global Technology Summer Analyst
+      institution: Bank of America 
+      year: 2020
+
+
+- title: Publications
+  type: time_table
+  contents:
+    - name: People who
+    - published:
+        - Nobel Prize in Physics
+        - Matteucci Medal
+    - releaseDate: 2025
+    - url:
+    - summary: summary 
+   
+
+- title: Academic Interests
+  type: nested_list
+  contents:
+    - title: Topic 1.
+      items:
+        - Description 1.
+        - Description 2.
+    - title: Topic 2.
+      items:
+        - Description 1.
+        - Description 2.
+
+- title: Other Interests
+  type: list
+  contents:
+    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
