@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-*[One Ruler](https://arxiv.org/abs/2503.01996v14)* has been accepted to COLM 2025! 
+*[One Ruler](https://arxiv.org/abs/2503.01996)* has been accepted to COLM 2025! 
