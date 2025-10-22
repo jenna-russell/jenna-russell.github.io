@@ -4,14 +4,7 @@
     "label": "PhD Student at University of Maryland, College Park",
     "image": "",
     "email": "jennarus@umd.edu",
-    "url": "https://jenna-russell.github.io/",
-    "profiles": [
-      {
-        "network": "Twitter",
-        "username": "AlbertEinstein",
-        "url": "https://twitter.com/AlbertEinstein"
-      }
-    ]
+    "url": "https://jenna-russell.github.io/"
   },
   "education": [
     {
@@ -61,15 +54,33 @@
       "url": "https://www.corning.com/worldwide/en.html",
       "startDate": "2019-05-15",
       "endDate": "2019-08-15",
-      "summary": "Improved emerging trend identification by analyzing news data using topic modeling to track the rise and fall of industry trends"
+      "summary": "Improved emerging trend identification by analyzing news data to track the rise and fall of industry trends"
     }
   ],
   "publications": [
     {
       "name": "People who frequently use ChatGPT for writing tasks are accurate and robust detectors of AI-generated text",
-      "publisher": "arXiv 2025",
+      "publisher": "The 63rd Annual Meeting of the Association for Computational Linguistics (ACL)",
       "releaseDate": "2025-01-26",
       "url": "https://arxiv.org/abs/2501.15654"
+    },
+    {
+      "name": "One ruler to measure them all: Benchmarking multilingual long-context language models",
+      "publisher": "2rd Conference on Language Modeling (COLM 2025)",
+      "releaseDate": "2025-03-01",
+      "url": "https://arxiv.org/abs/2503.01996"
+    },
+    {
+      "name": "Frankentext: Stitching random text fragments into long-form narratives",
+      "publisher": "arXiv",
+      "releaseDate": "2025-05-01",
+      "url": "https://arxiv.org/abs/2505.18128"
+    },
+    {
+      "name": "AI use in American newspapers is widespread, uneven, and rarely disclosed",
+      "publisher": "arXiv",
+      "releaseDate": "2025-10-21",
+      "url": "https://arxiv.org/abs/2510.18774"
     }
   ]
 }
