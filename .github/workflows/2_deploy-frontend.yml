@@ -68,12 +68,18 @@ jobs:
           python3 << 'EOF'
           import json
           from pathlib import Path
+          from datetime import datetime
           
           snapshot_path = Path("${{ env.SNAPSHOT_PATH }}")
           if not snapshot_path.exists():
               snapshot_path.parent.mkdir(parents=True, exist_ok=True)
+              # Create snapshot with required structure including snapshot_time
+              snapshot_data = {
+                  "objects": {},
+                  "snapshot_time": datetime.now().isoformat()
+              }
               with open(snapshot_path, 'w') as f:
-                  json.dump({"objects": {}}, f, indent=2)
+                  json.dump(snapshot_data, f, indent=2)
               print(f"Created initial snapshot at {snapshot_path}")
           else:
               print(f"Snapshot already exists at {snapshot_path}")
