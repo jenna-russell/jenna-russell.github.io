@@ -191,9 +191,14 @@ exclude:
   - README.md
   - readme_preview/
   - vendor
+  - papers-feed/extension/
+  - papers-feed/scripts/
+  - papers-feed/README.md
+  - papers-feed/pyproject.toml
 keep_files:
   - CNAME
   - .nojekyll
+  - papers-feed/
 
 # Plug-ins
 plugins:

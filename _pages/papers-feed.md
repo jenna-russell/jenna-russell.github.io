@@ -2,6 +2,8 @@
 layout: page
 title: Papers Feed
 permalink: /papers-feed/
+nav: true
+nav_order: 5
 ---
 
 # Research Papers Reading Feed
@@ -9,9 +11,14 @@ permalink: /papers-feed/
 This page tracks the research papers I'm reading, automatically logged via a browser extension when I visit papers on arXiv, OpenReview, and other sources.
 
 <div style="text-align: center; margin: 2rem 0;">
-  <a href="/papers-feed/" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">
-    View Papers Feed →
-  </a>
+  <p style="margin-bottom: 1rem;">
+    <a href="/papers-feed/index.html" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;" target="_blank">
+      View Interactive Papers Feed →
+    </a>
+  </p>
+  <p style="font-size: 0.9em; color: #666;">
+    The feed will show papers you've visited using the browser extension. Make sure you've visited some papers and the GitHub Actions workflows have processed them.
+  </p>
 </div>
 
 ## How it works

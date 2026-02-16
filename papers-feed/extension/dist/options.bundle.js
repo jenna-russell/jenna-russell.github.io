@@ -153,8 +153,8 @@ function showStatus(message, isError = false) {
 }
 // Validate settings before saving
 async function validateSettings(settings) {
-    // Validate repository format
-    if (!/^[\w-]+\/[\w-]+$/.test(settings.githubRepo)) {
+    // Validate repository format (allows periods in repo name for .github.io repos)
+    if (!/^[\w-]+\/[\w.-]+$/.test(settings.githubRepo)) {
         throw new Error('Invalid repository format. Use username/repository');
     }
     // Validate the token by making a test API call
