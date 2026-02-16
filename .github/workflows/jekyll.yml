@@ -55,15 +55,23 @@ jobs:
           mkdir -p _site/papers-feed/data/papers
           
           # Copy frontend files
-          if [ -d "papers-feed/frontend" ]; then
-            cp -r papers-feed/frontend/* _site/papers-feed/
+          echo "Copying papers feed frontend files..."
+          if [ -f "papers-feed/frontend/index.html" ]; then
+            cp papers-feed/frontend/index.html _site/papers-feed/
+            cp papers-feed/frontend/papersfeed.css _site/papers-feed/
+            cp papers-feed/frontend/papersfeed.js _site/papers-feed/
+            echo "Frontend files copied successfully"
+          else
+            echo "Warning: papers-feed/frontend files not found"
           fi
           
           # Copy data if it exists
           if [ -f "papers-feed/data/papers/gh-store-snapshot.json" ]; then
+            echo "Copying existing data file..."
             cp papers-feed/data/papers/gh-store-snapshot.json _site/papers-feed/data/papers/
           else
             # Create empty data file so the page doesn't error
+            echo "Creating empty data file..."
             echo '{}' > _site/papers-feed/data/papers/gh-store-snapshot.json
           fi
           
@@ -71,6 +79,10 @@ jobs:
           if [ -d "papers-feed/data/papers" ]; then
             find papers-feed/data/papers -type f -name "*.md" -path "*/features/*" -exec sh -c 'mkdir -p _site/papers-feed/data/$(dirname "{}" | sed "s|papers-feed/data/||") && cp "{}" _site/papers-feed/data/$(echo "{}" | sed "s|papers-feed/data/||")' \;
           fi
+          
+          # Verify files were copied
+          echo "Files in _site/papers-feed/:"
+          ls -la _site/papers-feed/ || echo "Directory not created"
       
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
