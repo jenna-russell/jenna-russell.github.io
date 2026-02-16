@@ -27,11 +27,13 @@ jobs:
     outputs:
       changes_detected: ${{ steps.commit-changes.outputs.changes_detected }}
     steps:
-      - name: Wait for updates
+      - name: Wait for updates (optional)
         uses: actions/github-script@v7
+        continue-on-error: true
         with:
           script: |
-            while (true) {
+            // Only wait if triggered by an issue event and there are active updates
+            if (context.eventName === 'issues') {
               const runs = await github.rest.actions.listWorkflowRuns({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
@@ -39,13 +41,33 @@ jobs:
               });
               
               const activeUpdates = runs.data.workflow_runs.filter(run => 
-                (run.status === 'in_progress' || run.status === 'queued')
+                (run.status === 'in_progress' || run.status === 'queued') &&
+                run.created_at > new Date(Date.now() - 5 * 60 * 1000).toISOString() // Only recent runs
               );
               
-              if (activeUpdates.length === 0) break;
-              console.log(`Waiting for ${activeUpdates.length} active updates to complete...`);
-              await new Promise(r => setTimeout(r, 10000));
+              if (activeUpdates.length > 0) {
+                console.log(`Waiting for ${activeUpdates.length} active updates to complete...`);
+                let waited = 0;
+                const maxWait = 120; // 2 minutes max
+                while (waited < maxWait && activeUpdates.length > 0) {
+                  await new Promise(r => setTimeout(r, 10000));
+                  waited += 10;
+                  
+                  const currentRuns = await github.rest.actions.listWorkflowRuns({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    workflow_id: '1_update_and_enrich.yml',
+                  });
+                  
+                  const stillActive = currentRuns.data.workflow_runs.filter(run => 
+                    (run.status === 'in_progress' || run.status === 'queued')
+                  );
+                  
+                  if (stillActive.length === 0) break;
+                }
+              }
             }
+            console.log("Proceeding with snapshot generation...");
 
       - uses: actions/checkout@v4
       
@@ -135,20 +157,21 @@ jobs:
 
       - name: Build web directory
         run: |
-          mkdir -p web/papers-feed
+          mkdir -p web/papers-feed/data/papers
           cp papers-feed/frontend/* web/papers-feed/
           
-          # Copy paper features maintaining directory structure
-          cd papers-feed/data
-          if [ -d "papers" ]; then
-            # Create papers directory in web/papers-feed/data
-            mkdir -p ../../web/papers-feed/data/papers
-            
-            # Find all markdown files under papers/*/features
-            # and copy them maintaining directory structure
-            find papers -type f -name "*.md" -path "*/features/*" -exec cp --parents {} ../../web/papers-feed/data/ \;
+          # Copy snapshot data if it exists
+          if [ -f "papers-feed/data/papers/gh-store-snapshot.json" ]; then
+            cp papers-feed/data/papers/gh-store-snapshot.json web/papers-feed/data/papers/
+          else
+            # Create empty snapshot if it doesn't exist yet
+            echo '{"objects": {}, "snapshot_time": "'$(date -u +"%Y-%m-%dT%H:%M:%S")'"}' > web/papers-feed/data/papers/gh-store-snapshot.json
           fi
-          cd ../..
+          
+          # Copy paper features maintaining directory structure (if they exist)
+          if [ -d "papers-feed/data/papers" ]; then
+            find papers-feed/data/papers -type f -name "*.md" -path "*/features/*" -exec sh -c 'mkdir -p web/papers-feed/data/$(dirname "{}" | sed "s|papers-feed/data/||") && cp "{}" web/papers-feed/data/$(echo "{}" | sed "s|papers-feed/data/||")' \;
+          fi
 
       - name: Get git info
         id: git-info
