@@ -57,16 +57,32 @@ jobs:
       - name: Install dependencies
         run: pip install gh-store
 
-      - name: Update snapshot
+      - name: Create snapshot directory
+        run: |
+          mkdir -p papers-feed/data/papers
+          
+      - name: Create initial snapshot if needed
         env:
           SNAPSHOT_PATH: papers-feed/data/papers/gh-store-snapshot.json
         run: |
-          mkdir -p $(dirname ${{ env.SNAPSHOT_PATH }})
-          # Create empty snapshot file if it doesn't exist
-          if [ ! -f "${{ env.SNAPSHOT_PATH }}" ]; then
-            echo '{"objects": {}}' > ${{ env.SNAPSHOT_PATH }}
-          fi
-          # Update the snapshot from GitHub issues
+          python3 << 'EOF'
+          import json
+          from pathlib import Path
+          
+          snapshot_path = Path("${{ env.SNAPSHOT_PATH }}")
+          if not snapshot_path.exists():
+              snapshot_path.parent.mkdir(parents=True, exist_ok=True)
+              with open(snapshot_path, 'w') as f:
+                  json.dump({"objects": {}}, f, indent=2)
+              print(f"Created initial snapshot at {snapshot_path}")
+          else:
+              print(f"Snapshot already exists at {snapshot_path}")
+          EOF
+          
+      - name: Update snapshot from GitHub issues
+        env:
+          SNAPSHOT_PATH: papers-feed/data/papers/gh-store-snapshot.json
+        run: |
           python -m gh_store update-snapshot \
             --token ${{ secrets.GITHUB_TOKEN }} \
             --repo ${{ github.repository }} \
