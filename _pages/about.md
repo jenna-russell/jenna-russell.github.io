@@ -32,7 +32,7 @@ Welcome! I'm Jenna, a second-year Computer Science PhD student at the University
 
 Prior to joining UMass, I was a data scientist for Bank of America, doing applied research for [Erica Conversational AI](https://promotions.bankofamerica.com/digitalbanking/mobilebanking/erica). I completed my B.S. at Cornell University, majoring in Statistics and Information Science, and grew up in nearby Rochester, New York.
 
-Outside of my PhD, I spend my time lifting, running, and reading. I usually read somewhere between 70-100 books a year. Check out my [Goodreads](https://www.goodreads.com/user/show/39680770-jenna-russell), which I update pretty much daily. I also have a 13-year old cat named [Boo](blog/2025/cat). 
+Outside of my PhD, I spend my time lifting, running, and reading. I usually read somewhere between 70-100 books a year. Check out my [Goodreads](https://www.goodreads.com/user/show/39680770-jenna-russell)! I also have a 14-year old cat named [Boo](blog/2025/cat). 
 
 
 
