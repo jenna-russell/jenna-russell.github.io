@@ -183,5 +183,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             logCurrentPage();
         });
     }
+    // Set up options link
+    const optionsLink = document.getElementById('optionsLink');
+    if (optionsLink) {
+        optionsLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            chrome.runtime.openOptionsPage();
+        });
+    }
 });
 //# sourceMappingURL=popup.bundle.js.map

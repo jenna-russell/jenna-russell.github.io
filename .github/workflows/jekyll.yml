@@ -48,6 +48,30 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+      
+      - name: Copy papers feed to Jekyll site
+        run: |
+          # Create papers-feed directory in _site
+          mkdir -p _site/papers-feed/data/papers
+          
+          # Copy frontend files
+          if [ -d "papers-feed/frontend" ]; then
+            cp -r papers-feed/frontend/* _site/papers-feed/
+          fi
+          
+          # Copy data if it exists
+          if [ -f "papers-feed/data/papers/gh-store-snapshot.json" ]; then
+            cp papers-feed/data/papers/gh-store-snapshot.json _site/papers-feed/data/papers/
+          else
+            # Create empty data file so the page doesn't error
+            echo '{}' > _site/papers-feed/data/papers/gh-store-snapshot.json
+          fi
+          
+          # Copy any feature markdown files
+          if [ -d "papers-feed/data/papers" ]; then
+            find papers-feed/data/papers -type f -name "*.md" -path "*/features/*" -exec sh -c 'mkdir -p _site/papers-feed/data/$(dirname "{}" | sed "s|papers-feed/data/||") && cp "{}" _site/papers-feed/data/$(echo "{}" | sed "s|papers-feed/data/||")' \;
+          fi
+      
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3

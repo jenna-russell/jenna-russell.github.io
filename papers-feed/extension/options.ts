@@ -75,8 +75,8 @@ async function validateSettings(settings: {
   githubToken: string;
   sessionConfig: RawSessionConfig;
 }): Promise<void> {
-  // Validate repository format
-  if (!/^[\w-]+\/[\w-]+$/.test(settings.githubRepo)) {
+  // Validate repository format (allows periods in repo name for .github.io repos)
+  if (!/^[\w-]+\/[\w.-]+$/.test(settings.githubRepo)) {
     throw new Error('Invalid repository format. Use username/repository');
   }
 
