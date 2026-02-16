@@ -747,7 +747,7 @@ function formatPublishedWithColor(cell) {
 // read and reshape gh-store scnapshot
 function processComplexData(data) {
   const result = [];
-  const objects = data.objects;
+  const objects = data.objects || {};
   const paperKeys = Object.keys(objects).filter(key => key.startsWith("paper:"));
   
   for (const paperKey of paperKeys) {
@@ -1220,6 +1220,11 @@ document.addEventListener("DOMContentLoaded", function() {
       return response.json();
     })
     .then(data => {
+      // Handle empty or invalid data
+      if (!data || !data.objects) {
+        data = { objects: {} };
+      }
+      
       allData = processComplexData(data);
       
       // Initialize table and heatmap
@@ -1232,7 +1237,18 @@ document.addEventListener("DOMContentLoaded", function() {
       setupEventListeners();
     })
     .catch(error => {
-      document.querySelector(".loading").innerHTML = 
-        `Error loading data: ${error.message}. Make sure data.json exists in the same directory as this HTML file.`;
+      const loadingElement = document.querySelector(".loading");
+      if (loadingElement) {
+        loadingElement.innerHTML = 
+          `<div style="padding: 20px; text-align: center;">
+            <p><strong>No papers data yet.</strong></p>
+            <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+              Visit some papers using the browser extension, and the data will appear here once the GitHub Actions workflows process them.
+            </p>
+            <p style="font-size: 0.85em; color: #999; margin-top: 10px;">
+              Error: ${error.message}
+            </p>
+          </div>`;
+      }
     });
 });

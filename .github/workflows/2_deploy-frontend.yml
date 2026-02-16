@@ -8,6 +8,8 @@ on:
       - 'papers-feed/data/papers/gh-store-snapshot.json'
       - 'papers-feed/frontend/*'
       - '.github/workflows/2_deploy-frontend.yml'
+  issues:
+    types: [opened, closed, reopened]
 
 concurrency:
   group: store-deploy
@@ -60,6 +62,11 @@ jobs:
           SNAPSHOT_PATH: papers-feed/data/papers/gh-store-snapshot.json
         run: |
           mkdir -p $(dirname ${{ env.SNAPSHOT_PATH }})
+          # Create empty snapshot file if it doesn't exist
+          if [ ! -f "${{ env.SNAPSHOT_PATH }}" ]; then
+            echo '{"objects": {}}' > ${{ env.SNAPSHOT_PATH }}
+          fi
+          # Update the snapshot from GitHub issues
           python -m gh_store update-snapshot \
             --token ${{ secrets.GITHUB_TOKEN }} \
             --repo ${{ github.repository }} \
@@ -77,7 +84,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: papers-json
-          path: data/papers/gh-store-snapshot.json
+          path: papers-feed/data/papers/gh-store-snapshot.json
 
       - name: Commit changes
         id: commit-changes
@@ -102,7 +109,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: papers-json
-          path: web/papers-feed/
+          path: web/papers-feed/data/papers/
 
       - name: Build web directory
         run: |

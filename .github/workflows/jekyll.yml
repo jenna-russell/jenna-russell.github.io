@@ -70,9 +70,9 @@ jobs:
             echo "Copying existing data file..."
             cp papers-feed/data/papers/gh-store-snapshot.json _site/papers-feed/data/papers/
           else
-            # Create empty data file so the page doesn't error
-            echo "Creating empty data file..."
-            echo '{}' > _site/papers-feed/data/papers/gh-store-snapshot.json
+            # Create empty data file with proper structure so the page doesn't error
+            echo "Creating empty data file with proper structure..."
+            echo '{"objects": {}}' > _site/papers-feed/data/papers/gh-store-snapshot.json
           fi
           
           # Copy any feature markdown files
