@@ -90,14 +90,15 @@ jobs:
           python3 << 'EOF'
           import json
           from pathlib import Path
-          from datetime import datetime, timedelta
+          from datetime import datetime, timedelta, timezone
           
           snapshot_path = Path("${{ env.SNAPSHOT_PATH }}")
           if not snapshot_path.exists():
               snapshot_path.parent.mkdir(parents=True, exist_ok=True)
               # Create snapshot with very old timestamp so it picks up all existing papers
               # Set to 1 year ago to ensure all existing issues are included
-              old_timestamp = (datetime.now() - timedelta(days=365)).isoformat()
+              # Use UTC timezone-aware datetime
+              old_timestamp = (datetime.now(timezone.utc) - timedelta(days=365)).isoformat()
               snapshot_data = {
                   "objects": {},
                   "snapshot_time": old_timestamp
@@ -114,7 +115,8 @@ jobs:
               
               if paper_count == 0:
                   # Reset timestamp to very old to force full snapshot
-                  old_timestamp = (datetime.now() - timedelta(days=365)).isoformat()
+                  # Use UTC timezone-aware datetime
+                  old_timestamp = (datetime.now(timezone.utc) - timedelta(days=365)).isoformat()
                   existing_data["snapshot_time"] = old_timestamp
                   with open(snapshot_path, 'w') as f:
                       json.dump(existing_data, f, indent=2)
