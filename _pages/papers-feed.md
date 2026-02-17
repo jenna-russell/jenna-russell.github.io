@@ -2,8 +2,7 @@
 layout: page
 title: Papers Feed
 permalink: /papers-feed/
-nav: true
-nav_order: 5
+nav: false
 ---
 
 # Research Papers Reading Feed
