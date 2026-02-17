@@ -101,7 +101,42 @@
         "updated_at": "2026-02-17T01:51:43+00:00",
         "version": 1
       }
+    },
+    "paper:openreview.cEeICvp7Ly": {
+      "data": {
+        "sourceId": "openreview",
+        "paperId": "cEeICvp7Ly",
+        "url": "https://openreview.net/forum?id=cEeICvp7Ly&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3Daclweb.org%2FACL%2FARR%2F2026%2FJanuary%2FAuthors%23your-submissions)",
+        "title": "AI use in American newspapers is widespread, uneven, and rarely disclosed",
+        "authors": "Jenna Russell, Marzena Karpinska, Destiny Akinode, James Zhou, Katherine Thai, Bradley Emi, Max Spero, Mohit Iyyer",
+        "abstract": "AI is rapidly transforming journalism, but the extent of its use in published newspaper articles remains unclear. We address this gap by auditing a large-scale dataset of 186K articles from online editions of 1.5K American newspapers published in the summer of 2025. Using Pangram, a state-of-the-art AI detector, we discover that approximately 9\\% of newly-published articles are either partially or fully AI-generated. This AI use is unevenly distributed, appearing more frequently in smaller, local outlets, in specific topics such as weather and technology, and within certain ownership groups. We also analyze 45K opinion pieces from *Washington Post*, *New York Times*, and  *Wall Street Journal*, finding that they are 6.4 times more likely to contain AI-generated content than news articles from the same publications, with many AI-flagged op-eds authored by prominent public figures. \nDespite this prevalence, we find that AI use is rarely disclosed: a manual audit of 100 AI-flagged articles found only five disclosures of AI use. A factuality analysis shows AI-generated articles are 8.2 times more likely to contain hallucinated claims than human-written news. Overall, our audit highlights the immediate need for greater transparency and updated editorial standards regarding the use of AI in journalism to maintain public trust.",
+        "timestamp": "2026-02-17T14:18:40.497Z",
+        "rating": "novote",
+        "publishedDate": "",
+        "tags": [
+          "AI use",
+          "journalism",
+          "news media",
+          "large language models",
+          "AI detection",
+          "generative AI",
+          "authorship",
+          "transparency",
+          "media studies",
+          "computational social science"
+        ],
+        "doi": "",
+        "journalName": "ACL ARR 2026 January Submission",
+        "sourceType": "url"
+      },
+      "meta": {
+        "issue_number": 9,
+        "object_id": "paper:openreview.cEeICvp7Ly",
+        "created_at": "2026-02-17T14:18:40+00:00",
+        "updated_at": "2026-02-17T14:19:05+00:00",
+        "version": 1
+      }
     }
   },
-  "snapshot_time": "2026-02-17T01:52:16.534348+00:00"
+  "snapshot_time": "2026-02-17T14:19:34.235164+00:00"
 }
