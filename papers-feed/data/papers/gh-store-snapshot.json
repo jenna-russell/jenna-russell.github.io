@@ -229,16 +229,32 @@
       "data": {
         "sourceId": "openreview",
         "paperId": "NAiXr0jWT2",
-        "interactions": []
+        "interactions": [
+          {
+            "type": "reading_session",
+            "timestamp": "2026-02-17T16:45:03.885Z",
+            "data": {
+              "session_id": "session_1771346703422_5745wrp",
+              "source_id": "openreview",
+              "paper_id": "NAiXr0jWT2",
+              "start_time": "2026-02-17T16:43:07.105Z",
+              "end_time": "2026-02-17T16:45:03.422Z",
+              "heartbeat_count": 23,
+              "duration_seconds": 115,
+              "idle_seconds": 1,
+              "total_elapsed_seconds": 116
+            }
+          }
+        ]
       },
       "meta": {
-        "issue_number": 17,
+        "issue_number": 19,
         "object_id": "interactions:openreview.NAiXr0jWT2",
-        "created_at": "2026-02-17T14:42:52+00:00",
-        "updated_at": "2026-02-17T14:42:54+00:00",
+        "created_at": "2026-02-17T16:45:04+00:00",
+        "updated_at": "2026-02-17T16:45:26+00:00",
         "version": 1
       }
     }
   },
-  "snapshot_time": "2026-02-17T16:28:00.197533+00:00"
+  "snapshot_time": "2026-02-17T16:46:02.384292+00:00"
 }
