@@ -22,11 +22,19 @@ jobs:
           cache: 'pip'
           
       - name: Install dependencies
-        run: pip install gh-store
+        run: pip install gh-store arxiv
           
       - name: Process Updates
         run: |
           python -m gh_store process-updates \
+            --issue ${{ github.event.issue.number }} \
+            --token ${{ secrets.GITHUB_TOKEN }} \
+            --repo ${{ github.repository }}
+
+      - name: Hydrate Metadata (arXiv papers)
+        if: contains(github.event.issue.labels.*.name, 'stored-object')
+        run: |
+          python papers-feed/scripts/hydrate_metadata.py hydrate_issue_metadata \
             --issue ${{ github.event.issue.number }} \
             --token ${{ secrets.GITHUB_TOKEN }} \
             --repo ${{ github.repository }}
