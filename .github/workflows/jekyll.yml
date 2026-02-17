@@ -70,7 +70,7 @@ jobs:
             echo "Copying existing data file..."
             cp papers-feed/data/papers/gh-store-snapshot.json _site/papers-feed/data/papers/
             # Verify it has data
-            python3 -c "
+            python3 << 'PYEOF'
 import json
 from pathlib import Path
 snapshot_path = Path('_site/papers-feed/data/papers/gh-store-snapshot.json')
@@ -84,7 +84,7 @@ if snapshot_path.exists():
         print('✓ Papers found in snapshot!')
     else:
         print('⚠ WARNING: No papers found in snapshot file')
-"
+PYEOF
           else
             # Create empty data file with proper structure so the page doesn't error
             echo "Creating empty data file with proper structure..."
