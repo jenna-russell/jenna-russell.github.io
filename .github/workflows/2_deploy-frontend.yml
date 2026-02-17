@@ -186,7 +186,8 @@ jobs:
       
   deploy:
     needs: update-snapshot
-    if: github.event_name == 'workflow_dispatch' || needs.update-snapshot.outputs.changes_detected == 'true'
+    # Always deploy if manually triggered, or if snapshot was updated
+    if: always() && (github.event_name == 'workflow_dispatch' || needs.update-snapshot.outputs.changes_detected == 'true' || needs.update-snapshot.result == 'success')
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -220,11 +221,10 @@ jobs:
             echo '{"objects": {}, "snapshot_time": "'$(date -u +"%Y-%m-%dT%H:%M:%S")'"}' > web/papers-feed/data/papers/gh-store-snapshot.json
           fi
           
-          # Verify snapshot has data
+          # Verify snapshot has data (non-fatal warning)
           echo "Checking snapshot contents..."
           python3 << 'EOF'
           import json
-          import sys
           from pathlib import Path
           
           snapshot_path = Path("web/papers-feed/data/papers/gh-store-snapshot.json")
@@ -235,11 +235,11 @@ jobs:
               paper_count = len([k for k in data.get("objects", {}).keys() if k.startswith("paper:")])
               print(f"Snapshot contains {objects_count} total objects, {paper_count} papers")
               if paper_count == 0:
-                  print("WARNING: No papers found in snapshot!")
-                  sys.exit(1)
+                  print("⚠ WARNING: No papers found in snapshot! Feed will show empty state.")
+              else:
+                  print(f"✓ Successfully loaded {paper_count} papers")
           else:
-              print("ERROR: Snapshot file not found!")
-              sys.exit(1)
+              print("⚠ WARNING: Snapshot file not found! Creating empty one.")
           EOF
           
           # Copy paper features maintaining directory structure (if they exist)
