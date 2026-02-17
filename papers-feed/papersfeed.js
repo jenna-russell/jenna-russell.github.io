@@ -1212,20 +1212,32 @@ function formatDateRangeDescription(fromDate, toDate) {
 // Load and initialize
 document.addEventListener("DOMContentLoaded", function() {
   // Fetch data file
-  fetch("data/papers/gh-store-snapshot.json")
+  const dataPath = "data/papers/gh-store-snapshot.json";
+  console.log("Loading data from:", dataPath);
+  
+  fetch(dataPath)
     .then(response => {
+      console.log("Fetch response status:", response.status, response.statusText);
       if (!response.ok) {
-        throw new Error("Failed to load data.json");
+        throw new Error(`Failed to load data: ${response.status} ${response.statusText}`);
       }
       return response.json();
     })
     .then(data => {
+      console.log("Data loaded, structure:", {
+        hasObjects: !!data.objects,
+        objectCount: data.objects ? Object.keys(data.objects).length : 0,
+        paperCount: data.objects ? Object.keys(data.objects).filter(k => k.startsWith("paper:")).length : 0
+      });
+      
       // Handle empty or invalid data
       if (!data || !data.objects) {
+        console.warn("No objects in data, using empty structure");
         data = { objects: {} };
       }
       
       allData = processComplexData(data);
+      console.log("Processed data count:", allData.length);
       
       // Initialize table and heatmap
       initTable(allData);
