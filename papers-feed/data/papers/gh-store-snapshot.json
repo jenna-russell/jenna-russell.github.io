@@ -171,6 +171,21 @@
               "idle_seconds": 3,
               "total_elapsed_seconds": 113
             }
+          },
+          {
+            "type": "reading_session",
+            "timestamp": "2026-02-17T14:57:22.607Z",
+            "data": {
+              "session_id": "session_1771340242020_smrd3at",
+              "source_id": "openreview",
+              "paper_id": "cEeICvp7Ly",
+              "start_time": "2026-02-17T14:51:30.679Z",
+              "end_time": "2026-02-17T14:57:22.020Z",
+              "heartbeat_count": 70,
+              "duration_seconds": 350,
+              "idle_seconds": 1,
+              "total_elapsed_seconds": 351
+            }
           }
         ]
       },
@@ -178,7 +193,7 @@
         "issue_number": 12,
         "object_id": "interactions:openreview.cEeICvp7Ly",
         "created_at": "2026-02-17T14:20:03+00:00",
-        "updated_at": "2026-02-17T14:29:31+00:00",
+        "updated_at": "2026-02-17T14:57:50+00:00",
         "version": 1
       }
     },
@@ -225,5 +240,5 @@
       }
     }
   },
-  "snapshot_time": "2026-02-17T14:44:26.186836+00:00"
+  "snapshot_time": "2026-02-17T14:58:20.979679+00:00"
 }
