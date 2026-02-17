@@ -495,6 +495,10 @@ function formatTags(cell) {
 
 function formatReadingTimeWithColor(cell) {
   const seconds = cell.getValue();
+  if (!readingTimeColorScale || typeof readingTimeColorScale !== 'function') {
+    // Return plain value if color scale not initialized
+    return seconds || 0;
+  }
   const backgroundColor = readingTimeColorScale(seconds);
   const textColor = getContrastColor(backgroundColor);
   const element = cell.getElement();
@@ -505,6 +509,10 @@ function formatReadingTimeWithColor(cell) {
 
 function formatInteractionDaysWithColor(cell) {
   const seconds = cell.getValue();
+  if (!interactionDaysColorScale || typeof interactionDaysColorScale !== 'function') {
+    // Return plain value if color scale not initialized
+    return seconds || 0;
+  }
   const backgroundColor = interactionDaysColorScale(seconds);
   const textColor = getContrastColor(backgroundColor);
   const element = cell.getElement();
@@ -834,18 +842,28 @@ function processComplexData(data) {
 // Initialize the Tabulator table
 function initTable(data) {
 
+  // Initialize interaction days color scale
   const interactionDays = data.map(d => d.interactionDays).filter(t => t > 0);
   if (interactionDays.length > 0) {
     const max_id = d3.max(interactionDays);
     interactionDaysColorScale = d3.scaleSequential(d3.interpolateBlues)
       .domain([1, max_id]);
+  } else {
+    // Initialize with default scale if no data
+    interactionDaysColorScale = d3.scaleSequential(d3.interpolateBlues)
+      .domain([0, 1]);
   }
 
+  // Initialize reading time color scale
   const readingTimes = data.map(d => d.readingTimeSeconds).filter(t => t > 0);
   if (readingTimes.length > 0) {
     const p75 = d3.quantile(readingTimes.sort(d3.ascending), 0.75);
     readingTimeColorScale = d3.scaleSequential(d3.interpolateBlues)
       .domain([1, p75]);
+  } else {
+    // Initialize with default scale if no data
+    readingTimeColorScale = d3.scaleSequential(d3.interpolateBlues)
+      .domain([0, 1]);
   }
   
   console.log("Reading time color scale domain:", readingTimeColorScale ? readingTimeColorScale.domain() : "No scale");
