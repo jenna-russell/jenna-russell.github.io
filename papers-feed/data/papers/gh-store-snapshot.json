@@ -186,11 +186,11 @@
       "data": {
         "sourceId": "openreview",
         "paperId": "NAiXr0jWT2",
-        "url": "https://openreview.net/forum?id=NAiXr0jWT2&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3Daclweb.org%2FACL%2FARR%2F2026%2FJanuary%2FAuthors%23your-submissions)",
+        "url": "https://openreview.net/forum?id=NAiXr0jWT2#discussion",
         "title": "Frankentext: Stitching random text fragments into long-form narratives",
         "authors": "Chau Minh Pham, Jenna Russell, Dzung Pham, Mohit Iyyer",
         "abstract": "As AI text detectors are increasingly used to flag LLM-generated writing, a natural question arises: are there forms of high-quality generated narrative that can evade such detection? We introduce Frankentexts, a long-form narrative generation paradigm that treats an LLM as a composer of existing texts rather than as an author. Given a writing prompt and thousands of randomly sampled human-written snippets, the model assembles a coherent narrative where most tokens (e.g., 90%) are copied verbatim from the source passages. Despite the extreme challenge of the task, we observe through extensive automatic and human evaluation that Frankentexts improve over vanilla LLM generations in key writing quality metrics such as diversity and novelty while remaining mostly coherent and relevant to the prompt. Furthermore, Frankentexts pose a fundamental challenge to AI text detectors: 72% of Frankentexts produced by our best Gemini-2.5-Pro configuration are misclassified as human-written by Pangram, a state-of-the-art detector. Human annotators praise Frankentexts for their inventive premises, vivid descriptions, and dry humor; on the other hand, they identify issues with abrupt tonal shifts and uneven grammar across segments. Overall, the emergence of high-quality yet low-detectability Frankentexts challenges established authorship norms while raising broader concerns about the publishing economy.",
-        "timestamp": "2026-02-17T14:29:05.144Z",
+        "timestamp": "2026-02-17T14:29:47.167Z",
         "rating": "novote",
         "publishedDate": "",
         "tags": [
@@ -203,13 +203,27 @@
         "sourceType": "url"
       },
       "meta": {
-        "issue_number": 13,
+        "issue_number": 16,
         "object_id": "paper:openreview.NAiXr0jWT2",
-        "created_at": "2026-02-17T14:29:05+00:00",
-        "updated_at": "2026-02-17T14:29:27+00:00",
+        "created_at": "2026-02-17T14:29:47+00:00",
+        "updated_at": "2026-02-17T14:30:12+00:00",
+        "version": 1
+      }
+    },
+    "interactions:openreview.NAiXr0jWT2": {
+      "data": {
+        "sourceId": "openreview",
+        "paperId": "NAiXr0jWT2",
+        "interactions": []
+      },
+      "meta": {
+        "issue_number": 17,
+        "object_id": "interactions:openreview.NAiXr0jWT2",
+        "created_at": "2026-02-17T14:42:52+00:00",
+        "updated_at": "2026-02-17T14:42:54+00:00",
         "version": 1
       }
     }
   },
-  "snapshot_time": "2026-02-17T14:30:03.304716+00:00"
+  "snapshot_time": "2026-02-17T14:43:49.307014+00:00"
 }
