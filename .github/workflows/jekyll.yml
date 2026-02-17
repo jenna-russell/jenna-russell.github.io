@@ -10,6 +10,11 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["master"]
+    paths:
+      - '**'
+      - '!papers-feed/extension/**'
+      - '!papers-feed/scripts/**'
+      - '!papers-feed/README.md'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -69,14 +74,25 @@ jobs:
           if [ -f "papers-feed/data/papers/gh-store-snapshot.json" ]; then
             echo "Copying existing data file..."
             cp papers-feed/data/papers/gh-store-snapshot.json _site/papers-feed/data/papers/
-            # Verify it has data (simplified check)
-            echo "Verifying snapshot file..."
+            echo "Verifying snapshot file was copied..."
+            if [ -f "_site/papers-feed/data/papers/gh-store-snapshot.json" ]; then
+              echo "✓ Snapshot file copied successfully"
+              # Quick check of file size
+              FILE_SIZE=$(stat -f%z "_site/papers-feed/data/papers/gh-store-snapshot.json" 2>/dev/null || stat -c%s "_site/papers-feed/data/papers/gh-store-snapshot.json" 2>/dev/null || echo "unknown")
+              echo "  File size: $FILE_SIZE bytes"
+            else
+              echo "✗ ERROR: Snapshot file was not copied!"
+            fi
           else
             # Create empty data file with proper structure so the page doesn't error
             echo "Creating empty data file with proper structure..."
             echo '{"objects": {}, "snapshot_time": "'$(date -u +"%Y-%m-%dT%H:%M:%S")'"}' > _site/papers-feed/data/papers/gh-store-snapshot.json
             echo "⚠ WARNING: No snapshot file found in repository - using empty file"
           fi
+          
+          # List files to verify
+          echo "Files in _site/papers-feed/data/papers/:"
+          ls -lh _site/papers-feed/data/papers/ 2>/dev/null || echo "Directory not found"
           
           # Copy any feature markdown files
           if [ -d "papers-feed/data/papers" ]; then
