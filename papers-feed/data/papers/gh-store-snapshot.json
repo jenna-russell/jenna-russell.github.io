@@ -144,86 +144,56 @@
         "interactions": [
           {
             "type": "reading_session",
-            "timestamp": "2026-02-17T14:20:03.477Z",
+            "timestamp": "2026-02-17T16:06:42.595Z",
             "data": {
-              "session_id": "session_1771338002587_6a7dt1r",
+              "session_id": "session_1771344402459_6phvcjd",
               "source_id": "openreview",
               "paper_id": "cEeICvp7Ly",
-              "start_time": "2026-02-17T14:18:41.016Z",
-              "end_time": "2026-02-17T14:20:02.584Z",
-              "heartbeat_count": 16,
-              "duration_seconds": 80,
+              "start_time": "2026-02-17T16:05:45.079Z",
+              "end_time": "2026-02-17T16:06:42.459Z",
+              "heartbeat_count": 11,
+              "duration_seconds": 55,
               "idle_seconds": 2,
-              "total_elapsed_seconds": 82
+              "total_elapsed_seconds": 57
             }
           },
           {
             "type": "reading_session",
-            "timestamp": "2026-02-17T14:29:03.010Z",
+            "timestamp": "2026-02-17T16:21:06.393Z",
             "data": {
-              "session_id": "session_1771338542352_atsfkza",
+              "session_id": "session_1771345266334_k7llkfu",
               "source_id": "openreview",
               "paper_id": "cEeICvp7Ly",
-              "start_time": "2026-02-17T14:27:09.086Z",
-              "end_time": "2026-02-17T14:29:02.352Z",
-              "heartbeat_count": 22,
-              "duration_seconds": 110,
-              "idle_seconds": 3,
-              "total_elapsed_seconds": 113
-            }
-          },
-          {
-            "type": "reading_session",
-            "timestamp": "2026-02-17T14:57:22.607Z",
-            "data": {
-              "session_id": "session_1771340242020_smrd3at",
-              "source_id": "openreview",
-              "paper_id": "cEeICvp7Ly",
-              "start_time": "2026-02-17T14:51:30.679Z",
-              "end_time": "2026-02-17T14:57:22.020Z",
-              "heartbeat_count": 70,
-              "duration_seconds": 350,
-              "idle_seconds": 1,
-              "total_elapsed_seconds": 351
-            }
-          },
-          {
-            "type": "reading_session",
-            "timestamp": "2026-02-17T15:05:30.328Z",
-            "data": {
-              "session_id": "session_1771340730033_ia4lza5",
-              "source_id": "openreview",
-              "paper_id": "cEeICvp7Ly",
-              "start_time": "2026-02-17T15:05:14.402Z",
-              "end_time": "2026-02-17T15:05:30.033Z",
+              "start_time": "2026-02-17T16:20:48.579Z",
+              "end_time": "2026-02-17T16:21:06.334Z",
               "heartbeat_count": 3,
               "duration_seconds": 15,
-              "idle_seconds": 1,
-              "total_elapsed_seconds": 16
+              "idle_seconds": 3,
+              "total_elapsed_seconds": 18
             }
           },
           {
             "type": "reading_session",
-            "timestamp": "2026-02-17T16:03:09.121Z",
+            "timestamp": "2026-02-17T16:27:04.435Z",
             "data": {
-              "session_id": "session_1771344189052_yppqo1u",
+              "session_id": "session_1771345623942_c9xc6ip",
               "source_id": "openreview",
               "paper_id": "cEeICvp7Ly",
-              "start_time": "2026-02-17T16:02:41.726Z",
-              "end_time": "2026-02-17T16:03:09.052Z",
-              "heartbeat_count": 5,
-              "duration_seconds": 25,
-              "idle_seconds": 2,
-              "total_elapsed_seconds": 27
+              "start_time": "2026-02-17T16:21:06.339Z",
+              "end_time": "2026-02-17T16:27:03.942Z",
+              "heartbeat_count": 71,
+              "duration_seconds": 355,
+              "idle_seconds": 3,
+              "total_elapsed_seconds": 358
             }
           }
         ]
       },
       "meta": {
-        "issue_number": 12,
+        "issue_number": 18,
         "object_id": "interactions:openreview.cEeICvp7Ly",
-        "created_at": "2026-02-17T14:20:03+00:00",
-        "updated_at": "2026-02-17T16:03:45+00:00",
+        "created_at": "2026-02-17T16:06:43+00:00",
+        "updated_at": "2026-02-17T16:27:59+00:00",
         "version": 1
       }
     },
@@ -270,5 +240,5 @@
       }
     }
   },
-  "snapshot_time": "2026-02-17T16:07:52.051705+00:00"
+  "snapshot_time": "2026-02-17T16:28:00.197533+00:00"
 }
