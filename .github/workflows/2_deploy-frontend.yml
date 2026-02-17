@@ -90,31 +90,76 @@ jobs:
           python3 << 'EOF'
           import json
           from pathlib import Path
-          from datetime import datetime
+          from datetime import datetime, timedelta
           
           snapshot_path = Path("${{ env.SNAPSHOT_PATH }}")
           if not snapshot_path.exists():
               snapshot_path.parent.mkdir(parents=True, exist_ok=True)
-              # Create snapshot with required structure including snapshot_time
+              # Create snapshot with very old timestamp so it picks up all existing papers
+              # Set to 1 year ago to ensure all existing issues are included
+              old_timestamp = (datetime.now() - timedelta(days=365)).isoformat()
               snapshot_data = {
                   "objects": {},
-                  "snapshot_time": datetime.now().isoformat()
+                  "snapshot_time": old_timestamp
               }
               with open(snapshot_path, 'w') as f:
                   json.dump(snapshot_data, f, indent=2)
-              print(f"Created initial snapshot at {snapshot_path}")
+              print(f"Created initial snapshot at {snapshot_path} with old timestamp to include all existing papers")
           else:
-              print(f"Snapshot already exists at {snapshot_path}")
+              # If snapshot exists but is empty or very new, reset timestamp to pick up all papers
+              with open(snapshot_path) as f:
+                  existing_data = json.load(f)
+              objects_count = len(existing_data.get("objects", {}))
+              paper_count = len([k for k in existing_data.get("objects", {}).keys() if k.startswith("paper:")])
+              
+              if paper_count == 0:
+                  # Reset timestamp to very old to force full snapshot
+                  old_timestamp = (datetime.now() - timedelta(days=365)).isoformat()
+                  existing_data["snapshot_time"] = old_timestamp
+                  with open(snapshot_path, 'w') as f:
+                      json.dump(existing_data, f, indent=2)
+                  print(f"Reset snapshot timestamp to include all existing papers (was empty)")
+              else:
+                  print(f"Snapshot exists with {paper_count} papers, will update incrementally")
           EOF
           
       - name: Update snapshot from GitHub issues
         env:
           SNAPSHOT_PATH: papers-feed/data/papers/gh-store-snapshot.json
         run: |
+          echo "Generating snapshot from GitHub issues..."
           python -m gh_store update-snapshot \
             --token ${{ secrets.GITHUB_TOKEN }} \
             --repo ${{ github.repository }} \
             --snapshot-path ${{ env.SNAPSHOT_PATH }}
+          
+          # Verify snapshot was created with data
+          echo "Verifying snapshot contents..."
+          python3 << 'EOF'
+          import json
+          from pathlib import Path
+          
+          snapshot_path = Path("${{ env.SNAPSHOT_PATH }}")
+          if snapshot_path.exists():
+              with open(snapshot_path) as f:
+                  data = json.load(f)
+              objects_count = len(data.get("objects", {}))
+              paper_count = len([k for k in data.get("objects", {}).keys() if k.startswith("paper:")])
+              print(f"✓ Snapshot created: {objects_count} total objects, {paper_count} papers")
+              if paper_count == 0:
+                  print("⚠ WARNING: No papers found in snapshot!")
+                  print("This might mean:")
+                  print("  1. No issues with 'stored-object' label exist")
+                  print("  2. Issues exist but don't have paper: prefix")
+                  print("  3. Issues need to be processed first")
+              else:
+                  # Show first few paper keys
+                  paper_keys = [k for k in data.get("objects", {}).keys() if k.startswith("paper:")][:5]
+                  print(f"Sample paper keys: {paper_keys}")
+          else:
+              print("✗ ERROR: Snapshot file was not created!")
+              exit(1)
+          EOF
       
       # - name: Convert data
       #   run: |
@@ -160,13 +205,40 @@ jobs:
           mkdir -p web/papers-feed/data/papers
           cp papers-feed/frontend/* web/papers-feed/
           
-          # Copy snapshot data if it exists
-          if [ -f "papers-feed/data/papers/gh-store-snapshot.json" ]; then
+          # Copy snapshot data from artifact (downloaded earlier)
+          if [ -f "web/papers-feed/data/papers/gh-store-snapshot.json" ]; then
+            echo "Using snapshot from artifact"
+            ls -lh web/papers-feed/data/papers/gh-store-snapshot.json
+          elif [ -f "papers-feed/data/papers/gh-store-snapshot.json" ]; then
+            echo "Copying snapshot from repository"
             cp papers-feed/data/papers/gh-store-snapshot.json web/papers-feed/data/papers/
+            ls -lh web/papers-feed/data/papers/gh-store-snapshot.json
           else
-            # Create empty snapshot if it doesn't exist yet
+            echo "Warning: No snapshot file found, creating empty one"
             echo '{"objects": {}, "snapshot_time": "'$(date -u +"%Y-%m-%dT%H:%M:%S")'"}' > web/papers-feed/data/papers/gh-store-snapshot.json
           fi
+          
+          # Verify snapshot has data
+          echo "Checking snapshot contents..."
+          python3 << 'EOF'
+          import json
+          import sys
+          from pathlib import Path
+          
+          snapshot_path = Path("web/papers-feed/data/papers/gh-store-snapshot.json")
+          if snapshot_path.exists():
+              with open(snapshot_path) as f:
+                  data = json.load(f)
+              objects_count = len(data.get("objects", {}))
+              paper_count = len([k for k in data.get("objects", {}).keys() if k.startswith("paper:")])
+              print(f"Snapshot contains {objects_count} total objects, {paper_count} papers")
+              if paper_count == 0:
+                  print("WARNING: No papers found in snapshot!")
+                  sys.exit(1)
+          else:
+              print("ERROR: Snapshot file not found!")
+              sys.exit(1)
+          EOF
           
           # Copy paper features maintaining directory structure (if they exist)
           if [ -d "papers-feed/data/papers" ]; then
