@@ -102,6 +102,20 @@
         "version": 1
       }
     },
+    "interactions:openreview.cEeICvp7Ly": {
+      "data": {
+        "sourceId": "openreview",
+        "paperId": "cEeICvp7Ly",
+        "interactions": []
+      },
+      "meta": {
+        "issue_number": 12,
+        "object_id": "interactions:openreview.cEeICvp7Ly",
+        "created_at": "2026-02-17T14:20:03+00:00",
+        "updated_at": "2026-02-17T14:20:08+00:00",
+        "version": 1
+      }
+    },
     "paper:openreview.cEeICvp7Ly": {
       "data": {
         "sourceId": "openreview",
@@ -138,5 +152,5 @@
       }
     }
   },
-  "snapshot_time": "2026-02-17T14:19:34.235164+00:00"
+  "snapshot_time": "2026-02-17T14:20:11.498876+00:00"
 }
