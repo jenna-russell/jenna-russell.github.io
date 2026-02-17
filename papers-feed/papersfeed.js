@@ -802,16 +802,37 @@ function processComplexData(data) {
                'arxiv' : (paperData.url ? extractDomain(paperData.url) : null) ||
                  paperData.sourceId || paperData.sourceType;
     
-    // Ensure all fields are properly typed
-    const authors = Array.isArray(paperData.authors) ? paperData.authors.join(', ') : (paperData.authors || '');
-    const title = paperData.title || '';
-    const abstract = paperData.abstract || '';
+    // Ensure all fields are properly typed and handle empty strings
+    const authors = Array.isArray(paperData.authors) ? paperData.authors.join(', ') : (paperData.authors && paperData.authors.trim() ? paperData.authors : '');
+    
+    // Title fallback: use paperId if title is empty, format it nicely
+    let title = (paperData.title && paperData.title.trim()) ? paperData.title : '';
+    if (!title) {
+      // Format paperId nicely: "arxiv.2510.09869" -> "arXiv:2510.09869"
+      if (paperId.startsWith('arxiv.')) {
+        title = `arXiv:${paperId.replace('arxiv.', '')}`;
+      } else if (paperId) {
+        title = paperId;
+      } else {
+        title = 'Untitled';
+      }
+    }
+    
+    const abstract = (paperData.abstract && paperData.abstract.trim()) ? paperData.abstract : '';
     const tags = paperData.tags || paperData.arxiv_tags || [];
+    const url = paperData.url || '';
+    
+    // Try to extract published date from various fields
+    let publishedDate = paperData.publishedDate;
+    if (!publishedDate || !publishedDate.trim()) {
+      // Try other date fields
+      publishedDate = paperData.published || paperData.date || paperData.publicationDate || null;
+    }
     
     let freshness = -1;
-    if (lastReadDate && paperData.publishedDate) {
+    if (lastReadDate && publishedDate && publishedDate.trim()) {
       const lastReadStr = lastReadDate.toISOString().split('T')[0];  // Convert to YYYY-MM-DD
-      const publishedStr = normalizeDate(paperData.publishedDate);  // Normalize first
+      const publishedStr = normalizeDate(publishedDate);  // Normalize first
       freshness = daysBetween(publishedStr, lastReadStr);
     }
     
@@ -824,14 +845,14 @@ function processComplexData(data) {
       authors: authors,
       abstract: abstract,
       paperFreshness: freshness,
-      published: normalizeDate(paperData.publishedDate),
+      published: publishedDate ? normalizeDate(publishedDate) : null,
       firstRead: formatDate(paperMeta.created_at),
       lastRead: lastReadDate ? formatDate(lastReadDate) : formatDate(paperMeta.updated_at),
       lastReadTimestamp: lastReadDate ? lastReadDate : paperMeta.updated_at,
       readingTimeSeconds: totalReadingTime,
       interactionDays: uniqueInteractionDays,
       tags: tags,
-      url: paperData.url,
+      url: url,
       rawInteractionData: interactionData ? interactionData.interactions : []
     });
   }
