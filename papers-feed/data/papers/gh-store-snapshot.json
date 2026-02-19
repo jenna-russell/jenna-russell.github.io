@@ -390,7 +390,99 @@
         "updated_at": "2026-02-19T18:30:31+00:00",
         "version": 1
       }
+    },
+    "interactions:url-misc.2F924237": {
+      "data": {
+        "sourceId": "url-misc",
+        "paperId": "2F924237",
+        "interactions": []
+      },
+      "meta": {
+        "issue_number": 24,
+        "object_id": "interactions:url-misc.2F924237",
+        "created_at": "2026-02-19T18:37:59+00:00",
+        "updated_at": "2026-02-19T18:38:01+00:00",
+        "version": 1
+      }
+    },
+    "paper:url-misc.2F924237": {
+      "data": {
+        "sourceId": "url-misc",
+        "paperId": "2F924237",
+        "url": "https://www.tandfonline.com/doi/epdf/10.1080/1360080X.2026.2622146?needAccess=true",
+        "title": "Heads we win, tails you lose: AI detectors in education",
+        "authors": "",
+        "abstract": "",
+        "timestamp": "2026-02-19T18:37:48.101Z",
+        "rating": "novote",
+        "publishedDate": "",
+        "tags": [],
+        "doi": "",
+        "journalName": "",
+        "sourceType": "url"
+      },
+      "meta": {
+        "issue_number": 23,
+        "object_id": "paper:url-misc.2F924237",
+        "created_at": "2026-02-19T18:37:48+00:00",
+        "updated_at": "2026-02-19T18:38:10+00:00",
+        "version": 1
+      }
+    },
+    "paper:url-misc.7EEA0B67": {
+      "data": {
+        "sourceId": "url-misc",
+        "paperId": "7EEA0B67",
+        "url": "https://www.tandfonline.com/doi/full/10.1080/1360080X.2026.2622146",
+        "title": "Heads we win, tails you lose: AI detectors in education",
+        "authors": "",
+        "abstract": "The increasing use of generative artificial intelligence (AI) in student assessment has led to institutional reliance on detection tools. Unlike plagiarism detection, AI detection relies on unverif...",
+        "timestamp": "2026-02-19T18:37:44.384Z",
+        "rating": "novote",
+        "publishedDate": "2026-01-31",
+        "tags": [
+          "Artificial intelligence detection",
+          "generative artificial intelligence",
+          "academic integrity",
+          "higher education",
+          "procedural fairness"
+        ],
+        "doi": "",
+        "journalName": "Journal of Higher Education Policy and Management",
+        "sourceType": "url"
+      },
+      "meta": {
+        "issue_number": 22,
+        "object_id": "paper:url-misc.7EEA0B67",
+        "created_at": "2026-02-19T18:37:44+00:00",
+        "updated_at": "2026-02-19T18:38:07+00:00",
+        "version": 1
+      }
+    },
+    "paper:url-misc.5C75F6C4": {
+      "data": {
+        "sourceId": "url-misc",
+        "paperId": "5C75F6C4",
+        "url": "https://aclanthology.org/2025.acl-long.267.pdf",
+        "title": "5C75F6C4",
+        "authors": "",
+        "abstract": "",
+        "timestamp": "2026-02-19T18:37:14.240Z",
+        "rating": "novote",
+        "publishedDate": "",
+        "tags": [],
+        "doi": "",
+        "journalName": "",
+        "sourceType": "pdf"
+      },
+      "meta": {
+        "issue_number": 21,
+        "object_id": "paper:url-misc.5C75F6C4",
+        "created_at": "2026-02-19T18:37:14+00:00",
+        "updated_at": "2026-02-19T18:37:40+00:00",
+        "version": 1
+      }
     }
   },
-  "snapshot_time": "2026-02-19T18:31:55.815632+00:00"
+  "snapshot_time": "2026-02-19T18:39:12.842657+00:00"
 }
