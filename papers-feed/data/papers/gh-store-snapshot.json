@@ -482,7 +482,35 @@
         "updated_at": "2026-02-19T18:37:40+00:00",
         "version": 1
       }
+    },
+    "paper:arxiv.2601.18724": {
+      "data": {
+        "sourceId": "arxiv",
+        "paperId": "2601.18724",
+        "url": "https://www.arxiv.org/abs/2601.18724",
+        "title": "HalluCitation Matters: Revealing the Impact of Hallucinated References with 300 Hallucinated Papers in ACL Conferences",
+        "authors": "Yusuke Sakai, Hidetaka Kamigaito, Taro Watanabe",
+        "abstract": "Recently, we have often observed hallucinated citations or references that do not correspond to any existing work in papers under review, preprints, or published papers. Such hallucinated citations pose a serious concern to scientific reliability. When they appear in accepted papers, they may also negatively affect the credibility of conferences. In this study, we refer to hallucinated citations as \"HalluCitation\" and systematically investigate their prevalence and impact. We analyze all papers published at ACL, NAACL, and EMNLP in 2024 and 2025, including main conference, Findings, and workshop papers. Our analysis reveals that nearly 300 papers contain at least one HalluCitation, most of which were published in 2025. Notably, half of these papers were identified at EMNLP 2025, the most recent conference, indicating that this issue is rapidly increasing. Moreover, more than 100 such papers were accepted as main conference and Findings papers at EMNLP 2025, affecting the credibility.",
+        "timestamp": "2026-02-19T21:15:47.184Z",
+        "rating": "novote",
+        "publishedDate": "2026/01/26",
+        "tags": [
+          "Computation and Language (cs.CL)",
+          "Artificial Intelligence (cs.AI)",
+          "Digital Libraries (cs.DL)"
+        ],
+        "doi": "",
+        "journalName": "",
+        "sourceType": "url"
+      },
+      "meta": {
+        "issue_number": 25,
+        "object_id": "paper:arxiv.2601.18724",
+        "created_at": "2026-02-19T21:15:47+00:00",
+        "updated_at": "2026-02-19T21:16:09+00:00",
+        "version": 1
+      }
     }
   },
-  "snapshot_time": "2026-02-19T18:39:12.842657+00:00"
+  "snapshot_time": "2026-02-19T21:16:35.601467+00:00"
 }
