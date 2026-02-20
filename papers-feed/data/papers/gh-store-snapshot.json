@@ -564,7 +564,95 @@
         "updated_at": "2026-02-19T21:19:03+00:00",
         "version": 1
       }
+    },
+    "interactions:arxiv.2410.02603": {
+      "data": {
+        "sourceId": "arxiv",
+        "paperId": "2410.02603",
+        "interactions": [
+          {
+            "type": "reading_session",
+            "timestamp": "2026-02-20T18:28:05.121Z",
+            "data": {
+              "session_id": "session_1771612084868_vv05nyb",
+              "source_id": "arxiv",
+              "paper_id": "2410.02603",
+              "start_time": "2026-02-20T18:27:50.262Z",
+              "end_time": "2026-02-20T18:28:04.868Z",
+              "heartbeat_count": 2,
+              "duration_seconds": 10,
+              "idle_seconds": 5,
+              "total_elapsed_seconds": 15
+            }
+          }
+        ]
+      },
+      "meta": {
+        "issue_number": 30,
+        "object_id": "interactions:arxiv.2410.02603",
+        "created_at": "2026-02-20T18:28:05+00:00",
+        "updated_at": "2026-02-20T18:28:31+00:00",
+        "version": 1
+      }
+    },
+    "paper:arxiv.2410.02603": {
+      "data": {
+        "sourceId": "arxiv",
+        "paperId": "2410.02603",
+        "url": "https://arxiv.org/abs/2410.02603",
+        "title": "Agents' Room: Narrative Generation through Multi-step Collaboration",
+        "authors": "Fantine Huot, Reinald Kim Amplayo, Jennimaria Palomaki, Alice Shoshana Jakobovits, Elizabeth Clark, Mirella Lapata",
+        "abstract": "Writing compelling fiction is a multifaceted process combining elements such as crafting a plot, developing interesting characters, and using evocative language. While large language models (LLMs) show promise for story writing, they currently rely heavily on intricate prompting, which limits their use. We propose Agents' Room, a generation framework inspired by narrative theory, that decomposes narrative writing into subtasks tackled by specialized agents. To illustrate our method, we introduce Tell Me A Story, a high-quality dataset of complex writing prompts and human-written stories, and a novel evaluation framework designed specifically for assessing long narratives. We show that Agents' Room generates stories that are preferred by expert evaluators over those produced by baseline systems by leveraging collaboration and specialization to decompose the complex story writing task into tractable components. We provide extensive analysis with automated and human-based metrics of the generated output.",
+        "timestamp": "2026-02-20T18:27:48.247Z",
+        "rating": "novote",
+        "publishedDate": "2024/10/03",
+        "tags": [
+          "Computation and Language (cs.CL)",
+          "Machine Learning (cs.LG)",
+          "Multiagent Systems (cs.MA)"
+        ],
+        "doi": "",
+        "journalName": "",
+        "sourceType": "url"
+      },
+      "meta": {
+        "issue_number": 29,
+        "object_id": "paper:arxiv.2410.02603",
+        "created_at": "2026-02-20T18:27:48+00:00",
+        "updated_at": "2026-02-20T18:28:11+00:00",
+        "version": 1
+      }
+    },
+    "interactions:arxiv.2510.09869": {
+      "data": {
+        "sourceId": "arxiv",
+        "paperId": "2510.09869",
+        "interactions": [
+          {
+            "type": "reading_session",
+            "timestamp": "2026-02-20T18:27:42.173Z",
+            "data": {
+              "session_id": "session_1771612060871_bp185fe",
+              "source_id": "arxiv",
+              "paper_id": "2510.09869",
+              "start_time": "2026-02-20T18:26:34.946Z",
+              "end_time": "2026-02-20T18:27:40.871Z",
+              "heartbeat_count": 13,
+              "duration_seconds": 65,
+              "idle_seconds": 1,
+              "total_elapsed_seconds": 66
+            }
+          }
+        ]
+      },
+      "meta": {
+        "issue_number": 28,
+        "object_id": "interactions:arxiv.2510.09869",
+        "created_at": "2026-02-20T18:27:42+00:00",
+        "updated_at": "2026-02-20T18:28:09+00:00",
+        "version": 1
+      }
     }
   },
-  "snapshot_time": "2026-02-19T21:19:30.173334+00:00"
+  "snapshot_time": "2026-02-20T18:29:33.428534+00:00"
 }
