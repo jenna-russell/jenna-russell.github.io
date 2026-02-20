@@ -845,7 +845,21 @@
         "updated_at": "2026-02-20T19:24:23+00:00",
         "version": 1
       }
+    },
+    "interactions:arxiv.2601.03698": {
+      "data": {
+        "sourceId": "arxiv",
+        "paperId": "2601.03698",
+        "interactions": []
+      },
+      "meta": {
+        "issue_number": 39,
+        "object_id": "interactions:arxiv.2601.03698",
+        "created_at": "2026-02-20T19:29:20+00:00",
+        "updated_at": "2026-02-20T19:29:21+00:00",
+        "version": 1
+      }
     }
   },
-  "snapshot_time": "2026-02-20T19:25:29.301421+00:00"
+  "snapshot_time": "2026-02-20T19:30:14.254815+00:00"
 }
