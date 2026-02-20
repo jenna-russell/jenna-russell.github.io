@@ -737,7 +737,34 @@
         "updated_at": "2026-02-20T19:04:20+00:00",
         "version": 1
       }
+    },
+    "paper:arxiv.2601.08768": {
+      "data": {
+        "sourceId": "arxiv",
+        "paperId": "2601.08768",
+        "url": "https://arxiv.org/abs/2601.08768",
+        "title": "AI as Entertainment",
+        "authors": "Cody Kommers, Ari Holtzman",
+        "abstract": "Generative AI systems are predominantly designed, evaluated, and marketed as intelligent systems which will benefit society by augmenting or automating human cognitive labor, promising to increase personal, corporate, and macroeconomic productivity. But this mainstream narrative about what AI is and what it can do is in tension with another emerging use case: entertainment. We argue that the field of AI is unprepared to measure or respond to how the proliferation of entertaining AI-generated content will impact society. Emerging data suggest AI is already widely adopted for entertainment purposes -- especially by young people -- and represents a large potential source of revenue. We contend that entertainment will become a primary business model for major AI corporations seeking returns on massive infrastructure investments; this will exert a powerful influence on the technology these companies produce in the coming years. Examining current evaluation practices, we identify a critical asymmetry: while AI assessments rigorously measure both benefits and harms of intelligence, they focus almost exclusively on cultural harms. We lack frameworks for articulating how cultural outputs might be actively beneficial. Drawing on insights from the humanities, we propose \"thick entertainment\" as a framework for evaluating AI-generated cultural content -- one that considers entertainment's role in meaning-making, identity formation, and social connection rather than simply minimizing harm. While AI is often touted for its potential to revolutionize productivity, in the long run we may find that AI turns out to be as much about \"intelligence\" as social media is about social connection.",
+        "timestamp": "2026-02-20T19:09:21.969Z",
+        "rating": "novote",
+        "publishedDate": "2026/01/13",
+        "tags": [
+          "Artificial Intelligence (cs.AI)",
+          "Computers and Society (cs.CY)"
+        ],
+        "doi": "",
+        "journalName": "",
+        "sourceType": "url"
+      },
+      "meta": {
+        "issue_number": 34,
+        "object_id": "paper:arxiv.2601.08768",
+        "created_at": "2026-02-20T19:09:22+00:00",
+        "updated_at": "2026-02-20T19:09:46+00:00",
+        "version": 1
+      }
     }
   },
-  "snapshot_time": "2026-02-20T19:05:57.062756+00:00"
+  "snapshot_time": "2026-02-20T19:10:20.401124+00:00"
 }
