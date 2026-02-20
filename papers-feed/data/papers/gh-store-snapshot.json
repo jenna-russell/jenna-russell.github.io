@@ -778,7 +778,74 @@
         "updated_at": "2026-02-20T19:10:43+00:00",
         "version": 1
       }
+    },
+    "paper:arxiv.2601.03698": {
+      "data": {
+        "sourceId": "arxiv",
+        "paperId": "2601.03698",
+        "url": "https://arxiv.org/abs/2601.03698?utm_source=chatgpt.com",
+        "title": "Evaluation Framework for AI Creativity: A Case Study Based on Story Generation",
+        "authors": "Pharath Sathya, Yin Jou Huang, Fei Cheng",
+        "abstract": "Evaluating creative text generation remains a challenge because existing reference-based metrics fail to capture the subjective nature of creativity. We propose a structured evaluation framework for AI story generation comprising four components (Novelty, Value, Adherence, and Resonance) and eleven sub-components. Using controlled story generation via ``Spike Prompting'' and a crowdsourced study of 115 readers, we examine how different creative components shape both immediate and reflective human creativity judgments. Our findings show that creativity is evaluated hierarchically rather than cumulatively, with different dimensions becoming salient at different stages of judgment, and that reflective evaluation substantially alters both ratings and inter-rater agreement. Together, these results support the effectiveness of our framework in revealing dimensions of creativity that are obscured by reference-based evaluation.",
+        "timestamp": "2026-02-20T19:24:35.475Z",
+        "rating": "novote",
+        "publishedDate": "2026/01/07",
+        "tags": [
+          "Computation and Language (cs.CL)"
+        ],
+        "doi": "",
+        "journalName": "",
+        "sourceType": "url"
+      },
+      "meta": {
+        "issue_number": 38,
+        "object_id": "paper:arxiv.2601.03698",
+        "created_at": "2026-02-20T19:24:35+00:00",
+        "updated_at": "2026-02-20T19:24:57+00:00",
+        "version": 1
+      }
+    },
+    "interactions:arxiv.2506.03310": {
+      "data": {
+        "sourceId": "arxiv",
+        "paperId": "2506.03310",
+        "interactions": []
+      },
+      "meta": {
+        "issue_number": 37,
+        "object_id": "interactions:arxiv.2506.03310",
+        "created_at": "2026-02-20T19:24:09+00:00",
+        "updated_at": "2026-02-20T19:24:11+00:00",
+        "version": 1
+      }
+    },
+    "paper:arxiv.2506.03310": {
+      "data": {
+        "sourceId": "arxiv",
+        "paperId": "2506.03310",
+        "url": "https://arxiv.org/abs/2506.03310?utm_source=chatgpt.com",
+        "title": "The Reader is the Metric: How Textual Features and Reader Profiles Explain Conflicting Evaluations of AI Creative Writing",
+        "authors": "Guillermo Marco, Julio Gonzalo, V\u00edctor Fresno",
+        "abstract": "Recent studies comparing AI-generated and human-authored literary texts have produced conflicting results: some suggest AI already surpasses human quality, while others argue it still falls short. We start from the hypothesis that such divergences can be largely explained by genuine differences in how readers interpret and value literature, rather than by an intrinsic quality of the texts evaluated. Using five public datasets (1,471 stories, 101 annotators including critics, students, and lay readers), we (i) extract 17 reference-less textual features (e.g., coherence, emotional variance, average sentence length...); (ii) model individual reader preferences, deriving feature importance vectors that reflect their textual priorities; and (iii) analyze these vectors in a shared \"preference space\". Reader vectors cluster into two profiles: 'surface-focused readers' (mainly non-experts), who prioritize readability and textual richness; and 'holistic readers' (mainly experts), who value thematic development, rhetorical variety, and sentiment dynamics. Our results quantitatively explain how measurements of literary quality are a function of how text features align with each reader's preferences. These findings advocate for reader-sensitive evaluation frameworks in the field of creative text generation.",
+        "timestamp": "2026-02-20T19:23:59.939Z",
+        "rating": "novote",
+        "publishedDate": "2025/06/03",
+        "tags": [
+          "Computation and Language (cs.CL)",
+          "Human-Computer Interaction (cs.HC)"
+        ],
+        "doi": "",
+        "journalName": "",
+        "sourceType": "url"
+      },
+      "meta": {
+        "issue_number": 36,
+        "object_id": "paper:arxiv.2506.03310",
+        "created_at": "2026-02-20T19:24:00+00:00",
+        "updated_at": "2026-02-20T19:24:23+00:00",
+        "version": 1
+      }
     }
   },
-  "snapshot_time": "2026-02-20T19:11:28.365658+00:00"
+  "snapshot_time": "2026-02-20T19:25:29.301421+00:00"
 }
