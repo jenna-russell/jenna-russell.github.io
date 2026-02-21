@@ -687,6 +687,21 @@
               "idle_seconds": 1,
               "total_elapsed_seconds": 266
             }
+          },
+          {
+            "type": "reading_session",
+            "timestamp": "2026-02-21T20:43:18.937Z",
+            "data": {
+              "session_id": "session_1771706598670_tjnycew",
+              "source_id": "arxiv",
+              "paper_id": "2510.09869",
+              "start_time": "2026-02-21T20:42:47.710Z",
+              "end_time": "2026-02-21T20:43:18.668Z",
+              "heartbeat_count": 6,
+              "duration_seconds": 30,
+              "idle_seconds": 1,
+              "total_elapsed_seconds": 31
+            }
           }
         ]
       },
@@ -694,7 +709,7 @@
         "issue_number": 28,
         "object_id": "interactions:arxiv.2510.09869",
         "created_at": "2026-02-20T18:27:42+00:00",
-        "updated_at": "2026-02-20T18:38:26+00:00",
+        "updated_at": "2026-02-21T20:43:44+00:00",
         "version": 1
       }
     },
@@ -915,5 +930,5 @@
       }
     }
   },
-  "snapshot_time": "2026-02-21T20:43:08.338984+00:00"
+  "snapshot_time": "2026-02-21T20:44:11.120014+00:00"
 }
