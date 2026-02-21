@@ -19,7 +19,7 @@ permissions:
   contents: write
   pages: write
   id-token: write
-  actions: read
+  actions: write  # Need write to trigger other workflows
 
 jobs:
   update-snapshot:
@@ -183,6 +183,29 @@ jobs:
         with:
           commit_message: "chore: Update store snapshot [${{ github.run_id }}]"
           file_pattern: 'papers-feed/data/papers/**'
+          skip_dirty_check: true
+      
+      - name: Trigger Jekyll rebuild
+        if: steps.commit-changes.outputs.changes_detected == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Trigger Jekyll workflow after snapshot is committed
+            // Wait a moment for the commit to be available
+            await new Promise(r => setTimeout(r, 2000));
+            
+            try {
+              await github.rest.actions.createWorkflowDispatch({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                workflow_id: 'jekyll.yml',
+                ref: 'master'
+              });
+              console.log('✅ Triggered Jekyll workflow to rebuild site with new snapshot');
+            } catch (error) {
+              console.log('⚠️ Could not trigger Jekyll workflow directly, but push event should trigger it');
+              console.log('Error:', error.message);
+            }
       
   deploy:
     needs: update-snapshot
