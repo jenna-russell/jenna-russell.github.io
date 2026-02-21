@@ -758,8 +758,17 @@ function processComplexData(data) {
   const objects = data.objects || {};
   const paperKeys = Object.keys(objects).filter(key => key.startsWith("paper:"));
   
+  // Track papers by ID to deduplicate
+  const papersById = new Map();
+  
   for (const paperKey of paperKeys) {
     const paperId = extractObjectId(paperKey, "paper");
+    
+    // Skip OpenReview papers - only show arXiv and other sources
+    if (paperId && (paperId.toLowerCase().startsWith('openreview') || paperKey.toLowerCase().includes('openreview'))) {
+      continue;
+    }
+    
     const paperRaw = objects[paperKey];
     const paperData = paperRaw.data;
     const paperMeta = paperRaw.meta;
@@ -798,9 +807,19 @@ function processComplexData(data) {
       uniqueInteractionDays = uniqueDays.size;
     }
 
-    const source = paperData.sourceId === 'arxiv' || paperData.sourceType === 'arxiv' ? 
+    // Determine source, but skip OpenReview papers
+    const sourceId = paperData.sourceId || '';
+    const sourceType = paperData.sourceType || '';
+    
+    // Skip if this is an OpenReview paper
+    if (sourceId.toLowerCase() === 'openreview' || sourceType.toLowerCase() === 'openreview' ||
+        paperId.toLowerCase().startsWith('openreview')) {
+      continue;
+    }
+    
+    const source = sourceId === 'arxiv' || sourceType === 'arxiv' ? 
                'arxiv' : (paperData.url ? extractDomain(paperData.url) : null) ||
-                 paperData.sourceId || paperData.sourceType;
+                 sourceId || sourceType;
     
     // Ensure all fields are properly typed and handle empty strings
     const authors = Array.isArray(paperData.authors) ? paperData.authors.join(', ') : (paperData.authors && paperData.authors.trim() ? paperData.authors : '');
@@ -837,7 +856,7 @@ function processComplexData(data) {
     }
     
     // Create the row data
-    result.push({
+    const paperEntry = {
       paperKey: paperKey,
       id: paperId,
       source: source,
@@ -853,11 +872,88 @@ function processComplexData(data) {
       interactionDays: uniqueInteractionDays,
       tags: tags,
       url: url,
-      rawInteractionData: interactionData ? interactionData.interactions : []
-    });
+      rawInteractionData: interactionData ? interactionData.interactions : [],
+      createdTimestamp: new Date(paperMeta.created_at)
+    };
+    
+    // Check for duplicates by paperId - deduplicate on same day
+    if (papersById.has(paperId)) {
+      // Merge with existing entry
+      const existing = papersById.get(paperId);
+      
+      // Merge interaction data from both entries
+      const existingInteractions = existing.rawInteractionData || [];
+      const newInteractions = paperEntry.rawInteractionData || [];
+      const allInteractions = [...existingInteractions, ...newInteractions];
+      
+      // Deduplicate interactions by session ID or timestamp (keep unique ones)
+      const interactionMap = new Map();
+      for (const interaction of allInteractions) {
+        // Use session_id if available, otherwise use timestamp+type
+        const key = interaction.data?.session_id || `${interaction.timestamp}_${interaction.type}`;
+        if (!interactionMap.has(key)) {
+          interactionMap.set(key, interaction);
+        }
+      }
+      const mergedInteractions = Array.from(interactionMap.values());
+      
+      // Recalculate reading time and interaction days from merged interactions
+      let mergedReadingTime = 0;
+      let mergedLastReadDate = null;
+      const mergedUniqueDays = new Set();
+      
+      for (const interaction of mergedInteractions) {
+        if (interaction.type === "reading_session") {
+          mergedReadingTime += interaction.data?.duration_seconds || 0;
+          
+          const sessionDate = new Date(interaction.timestamp);
+          if (!mergedLastReadDate || sessionDate > mergedLastReadDate) {
+            mergedLastReadDate = sessionDate;
+          }
+          
+          if (interaction.timestamp) {
+            const date = new Date(interaction.timestamp);
+            const dateString = date.toISOString().split('T')[0]; // YYYY-MM-DD
+            mergedUniqueDays.add(dateString);
+          }
+        }
+      }
+      
+      // Use the most complete metadata (prefer entry with title/authors if available)
+      const useNew = (paperEntry.title && paperEntry.title !== `arXiv:${paperId.replace('arxiv.', '')}`) || 
+                     (paperEntry.authors && !existing.authors);
+      
+      if (useNew) {
+        // Update existing with new metadata but keep merged interaction data
+        existing.title = paperEntry.title || existing.title;
+        existing.authors = paperEntry.authors || existing.authors;
+        existing.abstract = paperEntry.abstract || existing.abstract;
+        existing.url = paperEntry.url || existing.url;
+        existing.tags = paperEntry.tags?.length ? paperEntry.tags : existing.tags;
+        existing.published = paperEntry.published || existing.published;
+      }
+      
+      // Update with merged interaction data
+      existing.readingTimeSeconds = mergedReadingTime;
+      existing.interactionDays = mergedUniqueDays.size;
+      existing.lastRead = mergedLastReadDate ? formatDate(mergedLastReadDate) : existing.lastRead;
+      existing.lastReadTimestamp = mergedLastReadDate || existing.lastReadTimestamp;
+      existing.rawInteractionData = mergedInteractions;
+      
+      // Use earliest firstRead date
+      const existingFirstRead = new Date(existing.firstRead || existing.createdTimestamp);
+      const newFirstRead = new Date(paperEntry.firstRead || paperEntry.createdTimestamp);
+      if (newFirstRead < existingFirstRead) {
+        existing.firstRead = paperEntry.firstRead;
+      }
+    } else {
+      // First time seeing this paper
+      papersById.set(paperId, paperEntry);
+    }
   }
   
-  return result;
+  // Convert map to array
+  return Array.from(papersById.values());
 }
 
 // Initialize the Tabulator table
