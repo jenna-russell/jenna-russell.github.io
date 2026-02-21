@@ -39,6 +39,21 @@ jobs:
             --token ${{ secrets.GITHUB_TOKEN }} \
             --repo ${{ github.repository }}
 
+      - name: Close issue after processing (to reduce notifications)
+        if: contains(github.event.issue.labels.*.name, 'stored-object')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Close the issue to reduce email notifications
+            // The issue data is already stored, so we don't need it open
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              state: 'closed'
+            });
+            console.log(`Closed issue #${context.payload.issue.number} to reduce notifications`);
+
   notify-deploy:
     needs: process-updates
     runs-on: ubuntu-latest

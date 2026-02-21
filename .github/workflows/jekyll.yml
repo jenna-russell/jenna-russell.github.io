@@ -15,6 +15,15 @@ on:
       - '!papers-feed/extension/**'
       - '!papers-feed/scripts/**'
       - '!papers-feed/README.md'
+      # Explicitly include snapshot file to ensure rebuilds when data updates
+      - 'papers-feed/data/papers/gh-store-snapshot.json'
+
+  # Also trigger when snapshot is updated by the deploy-frontend workflow
+  workflow_run:
+    workflows: ["Deploy Frontend"]
+    types:
+      - completed
+    branches: ["master"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
