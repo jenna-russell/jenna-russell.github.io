@@ -1,0 +1,41 @@
+name: Hydrate All Paper Metadata
+
+# This workflow hydrates metadata for all existing papers that don't have it yet
+on:
+  workflow_dispatch:
+  schedule:
+    # Run daily at 2 AM UTC to hydrate metadata for any papers that were missed
+    - cron: '0 2 * * *'
+
+jobs:
+  hydrate-metadata:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: pip install gh-store arxiv
+          
+      - name: Hydrate metadata for all papers
+        run: |
+          python papers-feed/scripts/hydrate_metadata.py hydrate_all_paper_issues \
+            --token ${{ secrets.GITHUB_TOKEN }} \
+            --repo ${{ github.repository }}
+          
+      - name: Trigger snapshot update
+        run: |
+          curl -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/2_deploy-frontend.yml/dispatches \
+            -d "{\"ref\":\"master\"}"

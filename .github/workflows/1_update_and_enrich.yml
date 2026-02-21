@@ -34,10 +34,11 @@ jobs:
       - name: Hydrate Metadata (arXiv papers)
         if: contains(github.event.issue.labels.*.name, 'stored-object')
         run: |
+          # Try to hydrate metadata, but don't fail if it doesn't work
           python papers-feed/scripts/hydrate_metadata.py hydrate_issue_metadata \
             --issue ${{ github.event.issue.number }} \
             --token ${{ secrets.GITHUB_TOKEN }} \
-            --repo ${{ github.repository }}
+            --repo ${{ github.repository }} || echo "Metadata hydration failed or not applicable (this is OK for non-arXiv papers)"
 
       - name: Close issue after processing (to reduce notifications)
         if: contains(github.event.issue.labels.*.name, 'stored-object')

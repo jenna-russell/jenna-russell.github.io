@@ -23,7 +23,32 @@ from gh_store.core.types import get_object_id_from_labels, StoredObject
 from gh_store.core.exceptions import DuplicateUIDError, ConcurrentUpdateError
 
 def is_metadata_satisfied(data: dict) -> bool:
-    return data and data.get('title') and not (data.get('id') in data.get('title'))
+    """Check if paper metadata is complete (has title, authors, etc.)"""
+    if not data:
+        return False
+    
+    title = data.get('title', '').strip()
+    authors = data.get('authors', [])
+    
+    # Check if title exists and is not just the paper ID
+    if not title:
+        return False
+    
+    # If title is just the ID or "arXiv:ID", metadata is not satisfied
+    paper_id = data.get('paperId', '') or data.get('id', '')
+    if paper_id and (title == paper_id or title == f"arXiv:{paper_id}" or paper_id in title):
+        return False
+    
+    # Check if authors exist (can be string or list)
+    if isinstance(authors, list):
+        has_authors = len(authors) > 0
+    elif isinstance(authors, str):
+        has_authors = bool(authors.strip())
+    else:
+        has_authors = False
+    
+    # Metadata is satisfied if we have a real title and authors
+    return has_authors
 
 def is_valid_arxiv_id(arxiv_id: str) -> bool:
     """Validate arXiv ID format."""
@@ -112,7 +137,8 @@ def hydrate_issue_metadata(issue: int, token:str, repo:str):
     for k, v_new in arxiv_meta.items():
         #v_old = getattr(obj.data, k)
         v_old = obj.data.get(k)
-        if not v_old:
+        # Update if field is missing, empty string, or empty list
+        if not v_old or (isinstance(v_old, str) and not v_old.strip()) or (isinstance(v_old, list) and len(v_old) == 0):
             updates[k] = v_new
 
     metadata_satisfied = False
@@ -160,6 +186,79 @@ def hydrate_all_open_issues(token:str, repo:str):
         except ConcurrentUpdateError:
             logger.info("Issue %s has too many unprocessed concurrent updates. Either adjust this threshold, or reconcile the updates manually.", issue.number)
 
+def hydrate_all_paper_issues(token:str, repo:str):
+    """Hydrate metadata for all paper issues (open or closed) that need it."""
+    from gh_store.core.constants import LabelNames
+    
+    store = CanonicalStore(token=token, repo=repo, config_path=None)
+    github_store = GitHubStore(token=token, repo=repo, config_path=None)
+    
+    # Get all issues with stored-object label (both open and closed)
+    all_issues = github_store.repo.get_issues(
+        state="all",
+        labels=[LabelNames.STORED_OBJECT],
+        sort="created",
+        direction="desc"
+    )
+    
+    processed = 0
+    skipped = 0
+    errors = 0
+    
+    for issue in all_issues:
+        # Only process paper issues
+        if not issue.title.startswith("Stored Object: paper:"):
+            continue
+            
+        object_id = issue.title.replace("Stored Object: ", "")
+        if not object_id.startswith("paper:"):
+            continue
+            
+        paper_id = object_id[len('paper:'):]
+        
+        # Only process arXiv papers
+        if not paper_id.startswith('arxiv'):
+            logger.info(f"Skipping non-arXiv paper: {object_id}")
+            skipped += 1
+            continue
+        
+        # Check if metadata is already satisfied
+        try:
+            obj = store.issue_handler.get_object_by_number(issue.number)
+            if is_metadata_satisfied(obj.data):
+                logger.info(f"Metadata already satisfied for issue #{issue.number} ({object_id}), skipping")
+                skipped += 1
+                continue
+        except Exception as e:
+            logger.warning(f"Could not check issue #{issue.number}: {e}")
+            errors += 1
+            continue
+        
+        # Try to hydrate metadata
+        try:
+            logger.info(f"Processing issue #{issue.number}: {object_id}")
+            # Reopen issue temporarily if closed (needed for updates)
+            was_closed = issue.state == 'closed'
+            if was_closed:
+                issue.edit(state='open')
+            
+            hydrate_issue_metadata(issue=issue.number, token=token, repo=repo)
+            
+            # Close again if it was closed before
+            if was_closed:
+                issue.edit(state='closed')
+            
+            processed += 1
+            logger.info(f"✅ Successfully hydrated metadata for issue #{issue.number}")
+        except TypeError as e:
+            logger.info(f"Unsupported source for issue #{issue.number}: {e}")
+            skipped += 1
+        except Exception as e:
+            logger.error(f"Error processing issue #{issue.number}: {e}")
+            errors += 1
+    
+    logger.info(f"Metadata hydration complete: {processed} processed, {skipped} skipped, {errors} errors")
+
 # class Main:
 #     def hydrate_issue_metadata(self, issue: int, token:str, repo:str):
 #         hydrate_issue_metadata(issue=issue, token=token, repo=repo)
@@ -171,5 +270,9 @@ def hydrate_all_open_issues(token:str, repo:str):
 if __name__ == "__main__":
     #fire.Fire(Main)
     fire.Fire(
-        { "hydrate_issue_metadata":hydrate_issue_metadata, "hydrate_all_open_issues":hydrate_all_open_issues }
+        { 
+            "hydrate_issue_metadata": hydrate_issue_metadata, 
+            "hydrate_all_open_issues": hydrate_all_open_issues,
+            "hydrate_all_paper_issues": hydrate_all_paper_issues
+        }
     )
