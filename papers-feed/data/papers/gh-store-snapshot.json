@@ -883,7 +883,37 @@
         "updated_at": "2026-02-20T20:42:13+00:00",
         "version": 1
       }
+    },
+    "interactions:url-misc.33AF7AB5": {
+      "data": {
+        "sourceId": "url-misc",
+        "paperId": "33AF7AB5",
+        "interactions": [
+          {
+            "type": "reading_session",
+            "timestamp": "2026-02-21T20:42:05.838Z",
+            "data": {
+              "session_id": "session_1771706525565_bu8gf0x",
+              "source_id": "url-misc",
+              "paper_id": "33AF7AB5",
+              "start_time": "2026-02-21T20:41:57.207Z",
+              "end_time": "2026-02-21T20:42:05.565Z",
+              "heartbeat_count": 1,
+              "duration_seconds": 5,
+              "idle_seconds": 3,
+              "total_elapsed_seconds": 8
+            }
+          }
+        ]
+      },
+      "meta": {
+        "issue_number": 41,
+        "object_id": "interactions:url-misc.33AF7AB5",
+        "created_at": "2026-02-21T20:42:06+00:00",
+        "updated_at": "2026-02-21T20:42:32+00:00",
+        "version": 1
+      }
     }
   },
-  "snapshot_time": "2026-02-20T20:42:48.798952+00:00"
+  "snapshot_time": "2026-02-21T20:43:08.338984+00:00"
 }
