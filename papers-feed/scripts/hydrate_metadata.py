@@ -14,6 +14,7 @@ import fire
 from loguru import logger
 import arxiv
 import requests
+from datetime import datetime
 
 from gh_store.core.store import GitHubStore
 from gh_store.tools.canonicalize import CanonicalStore
@@ -77,6 +78,122 @@ def extract_arxiv_id_from_object_id(object_id: str) -> str:
     # Case 5: If none of the above, return the original ID
     return object_id
 
+def extract_acl_id_from_url(url: str) -> Optional[str]:
+    """Extract ACL Anthology ID from URL.
+    
+    Examples:
+    - https://aclanthology.org/2025.findings-emnlp.1171.pdf -> 2025.findings-emnlp.1171
+    - https://aclanthology.org/2024.acl-long.123/ -> 2024.acl-long.123
+    """
+    if not url or 'aclanthology.org' not in url:
+        return None
+    
+    # Match pattern: aclanthology.org/YEAR.VENUE.PAPER_ID
+    match = re.search(r'aclanthology\.org/([0-9]{4}\.[a-z-]+\.[0-9]+)', url)
+    if match:
+        return match.group(1)
+    return None
+
+def fetch_acl_metadata(acl_id: str) -> Dict[str, Any]:
+    """Fetch metadata from ACL Anthology by parsing HTML page."""
+    logger.info(f"Fetching metadata for ACL Anthology ID: {acl_id}")
+    
+    # ACL Anthology HTML pages contain citation metadata in meta tags
+    html_url = f"https://aclanthology.org/{acl_id}/"
+    
+    try:
+        response = requests.get(html_url, timeout=10)
+        response.raise_for_status()
+        html = response.text
+        
+        # Try BeautifulSoup first (more reliable)
+        try:
+            from bs4 import BeautifulSoup
+            soup = BeautifulSoup(html, 'html.parser')
+            
+            # Extract title
+            title_tag = soup.find('meta', {'name': 'citation_title'})
+            title = title_tag.get('content', '').strip() if title_tag else ''
+            
+            # Extract authors (multiple citation_author tags)
+            author_tags = soup.find_all('meta', {'name': 'citation_author'})
+            authors = [tag.get('content', '').strip() for tag in author_tags if tag.get('content')]
+            
+            # Extract publication date
+            date_tag = soup.find('meta', {'name': 'citation_publication_date'})
+            published_date = None
+            if date_tag:
+                date_str = date_tag.get('content', '').strip()
+                # Format is usually "YYYY/MM" or "YYYY"
+                if '/' in date_str:
+                    year, month = date_str.split('/')[:2]
+                    published_date = f"{year}-{month.zfill(2)}-01"
+                elif date_str:
+                    published_date = f"{date_str}-01-01"
+            
+            # Extract DOI
+            doi_tag = soup.find('meta', {'name': 'citation_doi'})
+            doi = doi_tag.get('content', '').strip() if doi_tag else ''
+            
+            # Extract venue/conference
+            venue_tag = soup.find('meta', {'name': 'citation_conference_title'})
+            venue = venue_tag.get('content', '').strip() if venue_tag else ''
+            
+            # Try to extract abstract from page content
+            abstract = ''
+            abstract_div = soup.find('div', {'id': 'abstract'}) or soup.find('div', class_='abstract')
+            if abstract_div:
+                abstract = abstract_div.get_text(strip=True)
+            
+            metadata = {
+                'title': title,
+                'authors': authors,
+                'publishedDate': published_date,
+                'abstract': abstract,
+                'doi': doi,
+                'tags': [venue] if venue else [],
+            }
+            
+            logger.info(f"Successfully fetched metadata for ACL ID: {acl_id}")
+            logger.info(f"Title: {title}, Authors: {len(authors)} authors")
+            return metadata
+            
+        except ImportError:
+            # BeautifulSoup not available, use regex
+            pass
+        
+        # Fallback to regex parsing
+        title_match = re.search(r'<meta\s+name=["\']citation_title["\']\s+content=["\']([^"\']+)["\']', html)
+        author_matches = re.findall(r'<meta\s+name=["\']citation_author["\']\s+content=["\']([^"\']+)["\']', html)
+        date_match = re.search(r'<meta\s+name=["\']citation_publication_date["\']\s+content=["\']([^"\']+)["\']', html)
+        doi_match = re.search(r'<meta\s+name=["\']citation_doi["\']\s+content=["\']([^"\']+)["\']', html)
+        venue_match = re.search(r'<meta\s+name=["\']citation_conference_title["\']\s+content=["\']([^"\']+)["\']', html)
+        
+        published_date = None
+        if date_match:
+            date_str = date_match.group(1)
+            if '/' in date_str:
+                year, month = date_str.split('/')[:2]
+                published_date = f"{year}-{month.zfill(2)}-01"
+            elif date_str:
+                published_date = f"{date_str}-01-01"
+        
+        metadata = {
+            'title': title_match.group(1) if title_match else '',
+            'authors': author_matches,
+            'publishedDate': published_date,
+            'abstract': '',
+            'doi': doi_match.group(1) if doi_match else '',
+            'tags': [venue_match.group(1)] if venue_match else [],
+        }
+        
+        logger.info(f"Successfully fetched metadata for ACL ID: {acl_id} (using regex)")
+        return metadata
+            
+    except requests.RequestException as e:
+        logger.error(f"Failed to fetch HTML for ACL ID {acl_id}: {e}")
+        raise ValueError(f"Could not fetch metadata for ACL Anthology ID: {acl_id}")
+
 def fetch_arxiv_metadata(arxiv_id: str) -> Dict[str, Any]:
     """Fetch metadata from arXiv API for a given ID using the arxiv client."""
     logger.info(f"Fetching metadata for arXiv ID: {arxiv_id}")
@@ -118,28 +235,50 @@ def hydrate_issue_metadata(issue: int, token:str, repo:str):
     if not object_id.startswith("paper:"):
         logger.info("Not a paper object, exiting.")
         sys.exit(0)
-    if 'url' in object_id:
-        logger.info("Metadata hydration is currently only supported for the arxiv source type.")
-        store.process_updates(issue) # ...why is this a separate second step? sheesh, I reaaly did rube goldberg the shit out of this thing
-        return
-        
     
     paper_id = object_id[len('paper:'):]
-    if paper_id.startswith('arxiv'):
-        arxiv_id = extract_arxiv_id_from_object_id(paper_id)
-    elif is_valid_arxiv_id(paper_id):
-        arxiv_id = paper_id
-    else:
-        raise TypeError(f"Unable to identify arxiv_id from object_id: {object_id}")
-
+    paper_data = obj.data
+    url = paper_data.get('url', '')
+    
     updates = {}
-    arxiv_meta = fetch_arxiv_metadata(arxiv_id)
-    for k, v_new in arxiv_meta.items():
-        #v_old = getattr(obj.data, k)
-        v_old = obj.data.get(k)
-        # Update if field is missing, empty string, or empty list
-        if not v_old or (isinstance(v_old, str) and not v_old.strip()) or (isinstance(v_old, list) and len(v_old) == 0):
-            updates[k] = v_new
+    
+    # Check if this is an ACL Anthology paper
+    acl_id = extract_acl_id_from_url(url)
+    if acl_id:
+        logger.info(f"Detected ACL Anthology paper: {acl_id}")
+        try:
+            acl_meta = fetch_acl_metadata(acl_id)
+            for k, v_new in acl_meta.items():
+                v_old = paper_data.get(k)
+                # Update if field is missing, empty string, or empty list
+                if not v_old or (isinstance(v_old, str) and not v_old.strip()) or (isinstance(v_old, list) and len(v_old) == 0):
+                    updates[k] = v_new
+        except Exception as e:
+            logger.error(f"Failed to fetch ACL metadata: {e}")
+    
+    # Check if this is an arXiv paper (only if not ACL)
+    elif paper_id.startswith('arxiv') or is_valid_arxiv_id(paper_id):
+        if paper_id.startswith('arxiv'):
+            arxiv_id = extract_arxiv_id_from_object_id(paper_id)
+        else:
+            arxiv_id = paper_id
+        
+        try:
+            arxiv_meta = fetch_arxiv_metadata(arxiv_id)
+            for k, v_new in arxiv_meta.items():
+                v_old = paper_data.get(k)
+                # Update if field is missing, empty string, or empty list
+                if not v_old or (isinstance(v_old, str) and not v_old.strip()) or (isinstance(v_old, list) and len(v_old) == 0):
+                    updates[k] = v_new
+        except Exception as e:
+            logger.error(f"Failed to fetch arXiv metadata: {e}")
+    elif 'url' in object_id or paper_id.startswith('url-'):
+        logger.info(f"URL-based paper ({object_id}), metadata hydration not supported yet.")
+        store.process_updates(issue)
+        return
+    else:
+        logger.info(f"Unknown paper type for {object_id}, skipping metadata hydration.")
+        return
 
     metadata_satisfied = False
     if updates:

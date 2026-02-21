@@ -876,45 +876,75 @@ function processComplexData(data) {
       createdTimestamp: new Date(paperMeta.created_at)
     };
     
-    // Check for duplicates by paperId
+    // Check for duplicates by paperId - deduplicate on same day
     if (papersById.has(paperId)) {
-      // Merge with existing entry - keep the one with more recent activity
+      // Merge with existing entry
       const existing = papersById.get(paperId);
-      const existingTimestamp = new Date(existing.lastReadTimestamp || existing.createdTimestamp);
-      const newTimestamp = new Date(paperEntry.lastReadTimestamp || paperEntry.createdTimestamp);
       
-      if (newTimestamp > existingTimestamp) {
-        // New entry is more recent, but merge the data
-        paperEntry.readingTimeSeconds = Math.max(existing.readingTimeSeconds, paperEntry.readingTimeSeconds);
-        paperEntry.interactionDays = Math.max(existing.interactionDays, paperEntry.interactionDays);
-        
-        // Merge interaction data
-        const existingInteractions = existing.rawInteractionData || [];
-        const newInteractions = paperEntry.rawInteractionData || [];
-        const allInteractions = [...existingInteractions, ...newInteractions];
-        
-        // Deduplicate interactions by timestamp (keep most recent)
-        const interactionMap = new Map();
-        for (const interaction of allInteractions) {
-          const key = `${interaction.timestamp}_${interaction.type}`;
-          if (!interactionMap.has(key) || new Date(interaction.timestamp) > new Date(interactionMap.get(key).timestamp)) {
-            interactionMap.set(key, interaction);
+      // Merge interaction data from both entries
+      const existingInteractions = existing.rawInteractionData || [];
+      const newInteractions = paperEntry.rawInteractionData || [];
+      const allInteractions = [...existingInteractions, ...newInteractions];
+      
+      // Deduplicate interactions by session ID or timestamp (keep unique ones)
+      const interactionMap = new Map();
+      for (const interaction of allInteractions) {
+        // Use session_id if available, otherwise use timestamp+type
+        const key = interaction.data?.session_id || `${interaction.timestamp}_${interaction.type}`;
+        if (!interactionMap.has(key)) {
+          interactionMap.set(key, interaction);
+        }
+      }
+      const mergedInteractions = Array.from(interactionMap.values());
+      
+      // Recalculate reading time and interaction days from merged interactions
+      let mergedReadingTime = 0;
+      let mergedLastReadDate = null;
+      const mergedUniqueDays = new Set();
+      
+      for (const interaction of mergedInteractions) {
+        if (interaction.type === "reading_session") {
+          mergedReadingTime += interaction.data?.duration_seconds || 0;
+          
+          const sessionDate = new Date(interaction.timestamp);
+          if (!mergedLastReadDate || sessionDate > mergedLastReadDate) {
+            mergedLastReadDate = sessionDate;
+          }
+          
+          if (interaction.timestamp) {
+            const date = new Date(interaction.timestamp);
+            const dateString = date.toISOString().split('T')[0]; // YYYY-MM-DD
+            mergedUniqueDays.add(dateString);
           }
         }
-        paperEntry.rawInteractionData = Array.from(interactionMap.values());
-        
-        // Use earliest firstRead date
-        const existingFirstRead = new Date(existing.firstRead || existing.createdTimestamp);
-        const newFirstRead = new Date(paperEntry.firstRead || paperEntry.createdTimestamp);
-        if (existingFirstRead < newFirstRead) {
-          paperEntry.firstRead = existing.firstRead;
-        }
-        
-        papersById.set(paperId, paperEntry);
-      } else {
-        // Existing entry is more recent, but update its data
-        existing.readingTimeSeconds = Math.max(existing.readingTimeSeconds, paperEntry.readingTimeSeconds);
-        existing.interactionDays = Math.max(existing.interactionDays, paperEntry.interactionDays);
+      }
+      
+      // Use the most complete metadata (prefer entry with title/authors if available)
+      const useNew = (paperEntry.title && paperEntry.title !== `arXiv:${paperId.replace('arxiv.', '')}`) || 
+                     (paperEntry.authors && !existing.authors);
+      
+      if (useNew) {
+        // Update existing with new metadata but keep merged interaction data
+        existing.title = paperEntry.title || existing.title;
+        existing.authors = paperEntry.authors || existing.authors;
+        existing.abstract = paperEntry.abstract || existing.abstract;
+        existing.url = paperEntry.url || existing.url;
+        existing.tags = paperEntry.tags?.length ? paperEntry.tags : existing.tags;
+        existing.published = paperEntry.published || existing.published;
+      }
+      
+      // Update with merged interaction data
+      existing.readingTimeSeconds = mergedReadingTime;
+      existing.interactionDays = mergedUniqueDays.size;
+      existing.lastRead = mergedLastReadDate ? formatDate(mergedLastReadDate) : existing.lastRead;
+      existing.lastReadTimestamp = mergedLastReadDate || existing.lastReadTimestamp;
+      existing.rawInteractionData = mergedInteractions;
+      
+      // Use earliest firstRead date
+      const existingFirstRead = new Date(existing.firstRead || existing.createdTimestamp);
+      const newFirstRead = new Date(paperEntry.firstRead || paperEntry.createdTimestamp);
+      if (newFirstRead < existingFirstRead) {
+        existing.firstRead = paperEntry.firstRead;
       }
     } else {
       // First time seeing this paper
