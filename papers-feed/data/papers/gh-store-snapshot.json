@@ -1071,7 +1071,31 @@
         "updated_at": "2026-02-24T16:32:46+00:00",
         "version": 1
       }
+    },
+    "paper:url-misc.23B1AB9": {
+      "data": {
+        "sourceId": "url-misc",
+        "paperId": "23B1AB9",
+        "url": "https://aclanthology.org/2021.emnlp-main.26/",
+        "title": "Narrative Theory for Computational Narrative Understanding",
+        "authors": "Andrew Piper, Richard Jean So, David Bamman",
+        "abstract": "Andrew Piper, Richard Jean So, David Bamman. Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing. 2021.",
+        "timestamp": "2026-02-24T16:34:48.829Z",
+        "rating": "novote",
+        "publishedDate": "",
+        "tags": [],
+        "doi": "10.18653/v1/2021.emnlp-main.26",
+        "journalName": "",
+        "sourceType": "url"
+      },
+      "meta": {
+        "issue_number": 53,
+        "object_id": "paper:url-misc.23B1AB9",
+        "created_at": "2026-02-24T16:34:49+00:00",
+        "updated_at": "2026-02-24T16:35:24+00:00",
+        "version": 1
+      }
     }
   },
-  "snapshot_time": "2026-02-24T16:34:48.272991+00:00"
+  "snapshot_time": "2026-02-24T16:36:01.116421+00:00"
 }
