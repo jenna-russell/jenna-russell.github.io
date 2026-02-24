@@ -1096,20 +1096,6 @@
         "version": 1
       }
     },
-    "interactions:arxiv.2512.15925": {
-      "data": {
-        "sourceId": "arxiv",
-        "paperId": "2512.15925",
-        "interactions": []
-      },
-      "meta": {
-        "issue_number": 57,
-        "object_id": "interactions:arxiv.2512.15925",
-        "created_at": "2026-02-24T16:38:27+00:00",
-        "updated_at": "2026-02-24T16:38:29+00:00",
-        "version": 1
-      }
-    },
     "paper:arxiv.2512.15925": {
       "data": {
         "sourceId": "arxiv",
@@ -1140,5 +1126,5 @@
       }
     }
   },
-  "snapshot_time": "2026-02-24T16:39:28.926962+00:00"
+  "snapshot_time": "2026-02-24T16:40:09.673099+00:00"
 }
