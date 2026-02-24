@@ -999,7 +999,79 @@
         "updated_at": "2026-02-23T21:17:42+00:00",
         "version": 1
       }
+    },
+    "paper:url-misc.4FADE3B9": {
+      "data": {
+        "sourceId": "url-misc",
+        "paperId": "4FADE3B9",
+        "url": "https://aclanthology.org/N16-1180.pdf",
+        "title": "4FADE3B9",
+        "authors": "",
+        "abstract": "",
+        "timestamp": "2026-02-24T16:32:38.992Z",
+        "rating": "novote",
+        "publishedDate": "",
+        "tags": [],
+        "doi": "",
+        "journalName": "",
+        "sourceType": "pdf"
+      },
+      "meta": {
+        "issue_number": 52,
+        "object_id": "paper:url-misc.4FADE3B9",
+        "created_at": "2026-02-24T16:32:39+00:00",
+        "updated_at": "2026-02-24T16:33:13+00:00",
+        "version": 1
+      }
+    },
+    "paper:url-misc.2E1A334": {
+      "data": {
+        "sourceId": "url-misc",
+        "paperId": "2E1A334",
+        "url": "https://aclanthology.org/N16-1180/",
+        "title": "Feuding Families and Former Friends: Unsupervised Learning for Dynamic Fictional Relationships",
+        "authors": "Mohit Iyyer, Anupam Guha, Snigdha Chaturvedi, Jordan Lee Boyd-Graber, Hal Daum\u00e9 III",
+        "abstract": "Mohit Iyyer, Anupam Guha, Snigdha Chaturvedi, Jordan Boyd-Graber, Hal Daum\u00e9 III. Proceedings of the 2016 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies. 2016.",
+        "timestamp": "2026-02-24T16:32:37.702Z",
+        "rating": "novote",
+        "publishedDate": "",
+        "tags": [],
+        "doi": "10.18653/v1/N16-1180",
+        "journalName": "",
+        "sourceType": "url"
+      },
+      "meta": {
+        "issue_number": 51,
+        "object_id": "paper:url-misc.2E1A334",
+        "created_at": "2026-02-24T16:32:38+00:00",
+        "updated_at": "2026-02-24T16:33:08+00:00",
+        "version": 1
+      }
+    },
+    "paper:url-misc.63F404C6": {
+      "data": {
+        "sourceId": "url-misc",
+        "paperId": "63F404C6",
+        "url": "https://aclanthology.org/2021.emnlp-main.26.pdf",
+        "title": "63F404C6",
+        "authors": "",
+        "abstract": "",
+        "timestamp": "2026-02-24T16:32:17.325Z",
+        "rating": "novote",
+        "publishedDate": "",
+        "tags": [],
+        "doi": "",
+        "journalName": "",
+        "sourceType": "pdf"
+      },
+      "meta": {
+        "issue_number": 50,
+        "object_id": "paper:url-misc.63F404C6",
+        "created_at": "2026-02-24T16:32:17+00:00",
+        "updated_at": "2026-02-24T16:32:46+00:00",
+        "version": 1
+      }
     }
   },
-  "snapshot_time": "2026-02-24T16:31:38.882051+00:00"
+  "snapshot_time": "2026-02-24T16:34:05.628106+00:00"
 }
