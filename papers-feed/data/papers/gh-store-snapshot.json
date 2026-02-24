@@ -1095,7 +1095,50 @@
         "updated_at": "2026-02-24T16:35:24+00:00",
         "version": 1
       }
+    },
+    "interactions:arxiv.2512.15925": {
+      "data": {
+        "sourceId": "arxiv",
+        "paperId": "2512.15925",
+        "interactions": []
+      },
+      "meta": {
+        "issue_number": 57,
+        "object_id": "interactions:arxiv.2512.15925",
+        "created_at": "2026-02-24T16:38:27+00:00",
+        "updated_at": "2026-02-24T16:38:29+00:00",
+        "version": 1
+      }
+    },
+    "paper:arxiv.2512.15925": {
+      "data": {
+        "sourceId": "arxiv",
+        "paperId": "2512.15925",
+        "url": "https://arxiv.org/abs/2512.15925",
+        "title": "Social Story Frames: Contextual Reasoning about Narrative Intent and Reception",
+        "authors": "Joel Mire, Maria Antoniak, Steven R. Wilson, Zexin Ma, Achyutarama R. Ganti, Andrew Piper, Maarten Sap",
+        "abstract": "Reading stories evokes rich interpretive, affective, and evaluative responses, such as inferences about narrative intent or judgments about characters. Yet, computational models of reader response are limited, preventing nuanced analyses. To address this gap, we introduce SocialStoryFrames, a formalism for distilling plausible inferences about reader response, such as perceived author intent, explanatory and predictive reasoning, affective responses, and value judgments, using conversational context and a taxonomy grounded in narrative theory, linguistic pragmatics, and psychology. We develop two models, SSF-Generator and SSF-Classifier, validated through human surveys (N=382 participants) and expert annotations, respectively. We conduct pilot analyses to showcase the utility of the formalism for studying storytelling at scale. Specifically, applying our models to SSF-Corpus, a curated dataset of 6,140 social media stories from diverse contexts, we characterize the frequency and interdependence of storytelling intents, and we compare and contrast narrative practices (and their diversity) across communities. By linking fine-grained, context-sensitive modeling with a generic taxonomy of reader responses, SocialStoryFrames enable new research into storytelling in online communities.",
+        "timestamp": "2026-02-24T16:37:04.320Z",
+        "rating": "novote",
+        "publishedDate": "2025/12/17",
+        "tags": [
+          "Computation and Language (cs.CL)",
+          "Artificial Intelligence (cs.AI)",
+          "Machine Learning (cs.LG)",
+          "Social and Information Networks (cs.SI)"
+        ],
+        "doi": "",
+        "journalName": "",
+        "sourceType": "url"
+      },
+      "meta": {
+        "issue_number": 54,
+        "object_id": "paper:arxiv.2512.15925",
+        "created_at": "2026-02-24T16:37:04+00:00",
+        "updated_at": "2026-02-24T16:37:30+00:00",
+        "version": 1
+      }
     }
   },
-  "snapshot_time": "2026-02-24T16:36:01.116421+00:00"
+  "snapshot_time": "2026-02-24T16:39:28.926962+00:00"
 }
