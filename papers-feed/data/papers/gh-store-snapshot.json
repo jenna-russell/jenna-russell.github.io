@@ -1178,7 +1178,110 @@
         "updated_at": "2026-02-24T16:55:28+00:00",
         "version": 1
       }
+    },
+    "interactions:arxiv.2601.06060": {
+      "data": {
+        "sourceId": "arxiv",
+        "paperId": "2601.06060",
+        "interactions": [
+          {
+            "type": "reading_session",
+            "timestamp": "2026-02-24T16:56:52.580Z",
+            "data": {
+              "session_id": "session_1771952212279_wxzopnh",
+              "source_id": "arxiv",
+              "paper_id": "2601.06060",
+              "start_time": "2026-02-24T16:56:41.851Z",
+              "end_time": "2026-02-24T16:56:52.279Z",
+              "heartbeat_count": 2,
+              "duration_seconds": 10,
+              "idle_seconds": 0,
+              "total_elapsed_seconds": 10
+            }
+          }
+        ]
+      },
+      "meta": {
+        "issue_number": 61,
+        "object_id": "interactions:arxiv.2601.06060",
+        "created_at": "2026-02-24T16:56:53+00:00",
+        "updated_at": "2026-02-24T16:57:15+00:00",
+        "version": 1
+      }
+    },
+    "paper:arxiv.2601.06060": {
+      "data": {
+        "sourceId": "arxiv",
+        "paperId": "2601.06060",
+        "url": "https://arxiv.org/abs/2601.06060",
+        "title": "Why Slop Matters",
+        "authors": "Cody Kommers, Eamon Duede, Julia Gordon, Ari Holtzman, Tess McNulty, Spencer Stewart, Lindsay Thomas, Richard Jean So, Hoyt Long",
+        "abstract": "AI-generated \"slop\" is often seen as digital pollution. We argue that this dismissal of the topic risks missing important aspects of AI Slop that deserve rigorous study. AI Slop serves a social function: it offers a supply-side solution to a variety of problems in cultural and economic demand - that, collectively, people want more content than humans can supply. We also argue that AI Slop is not mere digital detritus but has its own aesthetic value. Like other \"low\" cultural forms initially dismissed by critics, it nonetheless offers a legitimate means of collective sense-making, with the potential to express meaning and identity. We identify three key features of family resemblance for prototypical AI Slop: superficial competence (its veneer of quality is belied by a deeper lack of substance), asymmetry effort (it takes vastly less effort to generate than would be the case without AI), and mass producibility (it is part of a digital ecosystem of widespread generation and consumption). While AI Slop is heterogeneous and depends crucially on its medium, it tends to vary across three dimensions: instrumental utility, personalization, and surrealism. AI Slop will be an increasingly prolific and impactful part of our creative, information, and cultural economies; we should take it seriously as an object of study in its own right.",
+        "timestamp": "2026-02-24T16:56:39.666Z",
+        "rating": "novote",
+        "publishedDate": "2025/12/23",
+        "tags": [
+          "Computers and Society (cs.CY)",
+          "Artificial Intelligence (cs.AI)",
+          "Computation and Language (cs.CL)"
+        ],
+        "doi": "",
+        "journalName": "",
+        "sourceType": "url"
+      },
+      "meta": {
+        "issue_number": 60,
+        "object_id": "paper:arxiv.2601.06060",
+        "created_at": "2026-02-24T16:56:39+00:00",
+        "updated_at": "2026-02-24T16:57:15+00:00",
+        "version": 1
+      }
+    },
+    "interactions:arxiv.2510.21293": {
+      "data": {
+        "sourceId": "arxiv",
+        "paperId": "2510.21293",
+        "interactions": [
+          {
+            "type": "reading_session",
+            "timestamp": "2026-02-24T16:55:10.411Z",
+            "data": {
+              "session_id": "session_1771952109967_z49pk0l",
+              "source_id": "arxiv",
+              "paper_id": "2510.21293",
+              "start_time": "2026-02-24T16:54:53.013Z",
+              "end_time": "2026-02-24T16:55:09.967Z",
+              "heartbeat_count": 3,
+              "duration_seconds": 15,
+              "idle_seconds": 2,
+              "total_elapsed_seconds": 17
+            }
+          },
+          {
+            "type": "reading_session",
+            "timestamp": "2026-02-24T16:56:16.605Z",
+            "data": {
+              "session_id": "session_1771952176015_nem1wx7",
+              "source_id": "arxiv",
+              "paper_id": "2510.21293",
+              "start_time": "2026-02-24T16:55:14.300Z",
+              "end_time": "2026-02-24T16:56:16.015Z",
+              "heartbeat_count": 12,
+              "duration_seconds": 60,
+              "idle_seconds": 2,
+              "total_elapsed_seconds": 62
+            }
+          }
+        ]
+      },
+      "meta": {
+        "issue_number": 59,
+        "object_id": "interactions:arxiv.2510.21293",
+        "created_at": "2026-02-24T16:55:11+00:00",
+        "updated_at": "2026-02-24T16:56:58+00:00",
+        "version": 1
+      }
     }
   },
-  "snapshot_time": "2026-02-24T16:56:32.915192+00:00"
+  "snapshot_time": "2026-02-24T16:57:58.497577+00:00"
 }
